@@ -1,0 +1,253 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+   <title>Перевод: Поляков А.В. http://www.avprog.narod.ru</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="" />
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+   <style type="text/css">
+     body { margin: 0px; background: #FFFFFF; }
+   </style>
+   <script type="text/javascript" src="jquery.js"></script>
+   <script type="text/javascript" src="helpman_settings.js"></script>
+   <script type="text/javascript" src="helpman_topicinit.js"></script>
+
+   <script type="text/javascript">
+     HMSyncTOC("index.html", "asm_tutorial_02.html");
+   </script>
+   <script type="text/javascript" src="highlight.js"></script>
+   <script type="text/javascript">
+     $(document).ready(function(){highlight();});
+   </script>
+</head>
+<body>
+
+
+<table style="width:100%; border:none; border-spacing:0px; padding:5px; background:#C0C0C0">
+  <tr style="vertical-align:middle">
+    <td style="text-align:left">
+      <h1 class="p_Heading1"><span class="f_Heading1">Перевод: Поляков А.В. http://www.avprog.narod.ru</span></h1>
+
+    </td>
+    <td style="text-align:right">
+     <a href="index.html">Top</a>&nbsp;
+     
+     
+    </td>
+  </tr>
+</table>
+
+
+<!-- Placeholder for topic body. -->
+<table style="width:100%;border:none;border-spacing:0px"><tr style="vertical-align:top"><td style="text-align:left;padding:5px">
+<p class="p_Normal">TEXT SCRAMBLING in TRIAL VERSION OUTPUT! In evaluation mode, Help+Manual will scramble individual characters in random words in your published output files. This is a limitation of the free trial version. <a href="https://www.helpandmanual.com" target="_blank" class="weblink"> This help system was created with an evaluation copy of Help+Manual.</a></p>
+<hr style="height:2px; color:#FF0000; border-width:0; background-color:#ff0000;" /><p class="p_Normal">&nbsp;</p>
+<div style="text-align: left; text-indent: 0; padding: 0 0 0 0; margin: 0 0 0 0;"><table style="width:80%; border:none; border-spacing:2px;">
+<tr>
+<td style="vertical-align:middle; padding:1px; border:none"><p><span style="font-size: 19px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">Уроки Ассемблера 8086 для начинающих (Часть 2)</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="font-size: 11px; font-family: Verdana,Geneva,Arial,sans-serif;">Перевод: Поляков А.В. <a href="javascript:if(confirm('http://www.avprog.narod.ru/%20%20\n\nThis%20file%20was%20not%20retrieved%20by%20Teleport%20Ultra,%20because%20it%20is%20addressed%20on%20a%20domain%20or%20path%20outside%20the%20boundaries%20set%20for%20its%20Starting%20Address.%20%20\n\nDo%20you%20want%20to%20open%20it%20from%20the%20server?'))window.location='http://www.avprog.narod.ru/'" class="weblink">http://www.avprog.narod.ru</a></span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="font-size: 24px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">Доступ к памяти</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Для доступа к памяти можно использовать следующие четыре регистра: </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">BX, SI, DI, BP</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">.</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Комбинируя эти регистры внутри квадратных скобок </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">[ ]</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">, мы можем получить доступ к различным местоположениям в памяти. Возможны следующие комбинации (режимы адресации):</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<div style="text-align: left; text-indent: 0; padding: 0 0 0 0; margin: 0 0 0 0;"><table style="border:solid thin #a0a0a0; border-spacing:2px;">
+<tr>
+<td style="vertical-align:middle; padding:10px; border:solid thin #a0a0a0;"><p><span style="font-size: 16px; font-family: Fixedsys;">[BX + SI]</span></p>
+<p><span style="font-size: 16px; font-family: Fixedsys;">[BX + DI]</span></p>
+<p><span style="font-size: 16px; font-family: Fixedsys;">[BP + SI]</span></p>
+<p><span style="font-size: 16px; font-family: Fixedsys;">[BP + DI]</span></p>
+</td>
+<td style="vertical-align:middle; padding:10px; border:solid thin #a0a0a0;"><p><span style="font-size: 16px; font-family: Fixedsys;">[SI]</span></p>
+<p><span style="font-size: 16px; font-family: Fixedsys;">[DI]</span></p>
+<p><span style="font-size: 16px; font-family: Fixedsys;">d16 (только переменная-смещение)</span></p>
+<p><span style="font-size: 16px; font-family: Fixedsys;">[BX]</span></p>
+</td>
+<td style="vertical-align:middle; padding:10px; border:solid thin #a0a0a0;"><p><span style="font-size: 16px; font-family: Fixedsys;">[BX + SI] + d8</span></p>
+<p><span style="font-size: 16px; font-family: Fixedsys;">[BX + DI] + d8</span></p>
+<p><span style="font-size: 16px; font-family: Fixedsys;">[BP + SI] + d8</span></p>
+<p><span style="font-size: 16px; font-family: Fixedsys;">[BP + DI] + d8</span></p>
+</td>
+</tr>
+<tr>
+<td style="vertical-align:middle; padding:10px; border:solid thin #a0a0a0;"><p><span style="font-size: 16px; font-family: Fixedsys;">[SI] + d8</span></p>
+<p><span style="font-size: 16px; font-family: Fixedsys;">[DI] + d8</span></p>
+<p><span style="font-size: 16px; font-family: Fixedsys;">[BP] + d8</span></p>
+<p><span style="font-size: 16px; font-family: Fixedsys;">[BX] + d8</span></p>
+</td>
+<td style="vertical-align:middle; padding:10px; border:solid thin #a0a0a0;"><p><span style="font-size: 16px; font-family: Fixedsys;">[BX + SI] + d16</span></p>
+<p><span style="font-size: 16px; font-family: Fixedsys;">[BX + DI] + d16</span></p>
+<p><span style="font-size: 16px; font-family: Fixedsys;">[BP + SI] + d16</span></p>
+<p><span style="font-size: 16px; font-family: Fixedsys;">[BP + DI] + d16</span></p>
+</td>
+<td style="vertical-align:middle; padding:10px; border:solid thin #a0a0a0;"><p><span style="font-size: 16px; font-family: Fixedsys;">[SI] + d16</span></p>
+<p><span style="font-size: 16px; font-family: Fixedsys;">[DI] + d16</span></p>
+<p><span style="font-size: 16px; font-family: Fixedsys;">[BP] + d16</span></p>
+<p><span style="font-size: 16px; font-family: Fixedsys;">[BX] + d16</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">d8</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> - обозначение для 8-ми битовой подстановки.</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">d16</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> - обозначение для 16-ми битовой подстановки.</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Подстановка может быть непосредственным значением или смещением переменной, или даже и тем и другим. Она преобразуется компилятором в одиночное непосредственное значение.</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Подстановка может быть как внутри так и вне квадратных скобок (</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">[ ]</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">), компилятор генерирует одинаковый машинный код в обоих случаях.</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Подстановка - это величина </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">со знаком</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">, поэтому она может быть как положительной, так и отрицательной.</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Обычно компилятор различает </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">d8</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> и </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">d16</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> и генерирует требуемый машинный код.</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Например, представим что </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">DS = 100</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">, </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">BX = 30</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">, </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">SI = 70</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">.</span></p>
+<p><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Следующий способ адресации: </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">[BX + SI] + 25</span></p>
+<p><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">вычисляется процессором для этого физического адреса: </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">100 * 16 + 30 + 70 + 25 = 1725</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">.</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">По умолчанию сегментный регистр </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">DS</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> используется для всех способов адресации, кроме способа, который используется с регистром </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">BP</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">. В последнем случае используют сегментный регистр </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">SS</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">.</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Легко запомнить все возможные комбинации с помощью таблицы:</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><img alt="addressing_mode" width="165" height="76" style="margin:0;width:165px;height:76px;border:none" src="addressing_mode.gif"/></p>
+<p><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Вы можете формировать все имеющие силу комбинации, взяв по одному пункту из каждого столбца, либо пропустить какой-либо столбец и ничего из него не взять. Как вы можете видеть, </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">BX</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> и </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">BP</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> никогда не идут вместе. </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">SI</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> и </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">DI</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> также не могут быть вместе. Здесь приведен пример имеющего силу способа адресации: </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">[BX+5]</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">.</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<hr style="height:2px; color:#000000; border-width:0; background-color:#000000;" /><p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Значение в сегментном регистре (CS, DS, SS, ES) называется &quot;</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">segment (сегмент)</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">&quot;,</span></p>
+<p><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">а значение в регистре общего назначения (BX, SI, DI, BP) называется &quot;</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">offset (смещение)</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">&quot;.</span></p>
+<p><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Если DS содержит значение </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">1234h</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">, а SI содержит значение </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">7890h</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">, то это можно записать как </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">1234:7890</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">. Физический адрес будет таким: 1234h * 10h + 7890h = 19BD0h.</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<hr style="height:2px; color:#000000; border-width:0; background-color:#000000;" /><p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Чтобы указать компилятору тип данных,</span></p>
+<p><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">должны использоваться эти префиксы:</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">BYTE PTR</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> - для байта.</span></p>
+<p><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">WORD PTR</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> - для слова (два байта).</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Например:</span></p>
+<p class="p_CodeExample" style="page-break-inside: avoid;"><span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">BYTE&nbsp;PTR&nbsp;[BX]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;доступ&nbsp;к&nbsp;байту.</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">&nbsp;&nbsp;&nbsp;&nbsp;или</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">WORD&nbsp;PTR&nbsp;[BX]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;доступ&nbsp;к&nbsp;слову.</span></p>
+<p><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-style: italic;">Emu8086</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> поддерживает короткие префиксы:</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">b.</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> - для </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">BYTE PTR</span></p>
+<p><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">w.</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> - для </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">WORD PTR</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">иногда компилятор может вычислить тип данных автоматически, но вы не можете и не должны полагаться на это, если один из операндов является непосредственным значением.</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<hr style="height:2px; color:#000000; border-width:0; background-color:#000000;" /><p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="font-size: 24px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">Команда </span><span style="font-size: 24px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold; text-decoration: underline;">MOV</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p class="p_Normal" style="text-indent: 0; padding-left: 20px; margin: 0 0 0 20px;"><span class="f_Normal" style="font-size:16px; font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:20px;margin-left:-20px">&#8226;</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Копирует </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">второй операнд</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> (источник) в </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">первый операнд</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> (приемник).</span></p>
+<p class="p_Normal" style="margin: 0 0 0 40px;">&nbsp;</p>
+<p class="p_Normal" style="text-indent: 0; padding-left: 20px; margin: 0 0 0 20px;"><span class="f_Normal" style="font-size:16px; font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:20px;margin-left:-20px">&#8226;</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Операнд-источник может быть непосредственным значением, регистром общего назначения или местоположением памяти.</span></p>
+<p class="p_Normal" style="margin: 0 0 0 40px;">&nbsp;</p>
+<p class="p_Normal" style="text-indent: 0; padding-left: 20px; margin: 0 0 0 20px;"><span class="f_Normal" style="font-size:16px; font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:20px;margin-left:-20px">&#8226;</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Регистр-приемник может быть регистром общего назначения или местоположением памяти.</span></p>
+<p class="p_Normal" style="margin: 0 0 0 40px;">&nbsp;</p>
+<p class="p_Normal" style="text-indent: 0; padding-left: 20px; margin: 0 0 0 20px;"><span class="f_Normal" style="font-size:16px; font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:20px;margin-left:-20px">&#8226;</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Оба операнда должны иметь одинаковый размер байта или слова.</span></p>
+<div style="text-align: left; text-indent: 0; padding: 0 0 0 0; margin: 14px 0 0 0;"><table style="width:100%; border:solid thin #a0a0a0; border-spacing:2px;">
+<tr>
+<td style="vertical-align:middle; padding:10px; border:solid thin #a0a0a0;"><p><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Эти типы операндов поддерживаются:</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p class="p_Normal" style="margin: 14px 0 0 40px;"><span style="font-size: 16px; font-family: Fixedsys;">MOV регистр, память</span></p>
+<p class="p_Normal" style="margin: 0 0 0 40px;"><span style="font-size: 16px; font-family: Fixedsys;">MOV память, регистр</span></p>
+<p class="p_Normal" style="margin: 0 0 0 40px;"><span style="font-size: 16px; font-family: Fixedsys;">MOV регистр, регистр</span></p>
+<p class="p_Normal" style="margin: 0 0 0 40px;"><span style="font-size: 16px; font-family: Fixedsys;">MOV память, непосредственное значение (число)</span></p>
+<p class="p_Normal" style="margin: 0 0 14px 40px;"><span style="font-size: 16px; font-family: Fixedsys;">MOV регистр, непосредственное значение</span></p>
+<p><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">регистр</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">:</span><span style="font-family: Verdana,Geneva,Arial,sans-serif;"> AX, BX, CX, DX, AH, AL, BL, BH, CH, CL, DH, DL, DI, SI, BP, SP.</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">память</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">: [BX], [BX+SI+7], переменная, и т.п...</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">непосредственное значение</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">: 5, -24, 3Fh, 10001101b, и т.п...</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<div style="text-align: left; text-indent: 0; padding: 0 0 0 0; margin: 0 0 0 0;"><table style="width:100%; border:solid thin #a0a0a0; border-spacing:2px;">
+<tr>
+<td style="vertical-align:middle; padding:10px; border:solid thin #a0a0a0;"><p><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Для сегментных регистров поддерживаются только эти типы </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">MOV</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">:</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p class="p_Normal" style="margin: 14px 0 0 40px;"><span style="font-size: 16px; font-family: Fixedsys;">MOV сегментный регистр, память</span></p>
+<p class="p_Normal" style="margin: 0 0 0 40px;"><span style="font-size: 16px; font-family: Fixedsys;">MOV память, сегментный регистр</span></p>
+<p class="p_Normal" style="margin: 0 0 0 40px;"><span style="font-size: 16px; font-family: Fixedsys;">MOV регистр, сегментный регистр</span></p>
+<p class="p_Normal" style="margin: 0 0 14px 40px;"><span style="font-size: 16px; font-family: Fixedsys;">MOV сегментный регистр, регистр</span></p>
+<p><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">сегментный регистр</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">: DS, ES, SS, и только как второй операнд: CS.</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">регистр</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">:</span><span style="font-family: Verdana,Geneva,Arial,sans-serif;"> AX, BX, CX, DX, AH, AL, BL, BH, CH, CL, DH, DL, DI, SI, BP, SP.</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">память</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">: [BX], [BX+SI+7], переменная и т.п...</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Команда </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">MOV</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; text-decoration: underline;">не может</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> использоваться для установки значений регистров </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">CS</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> и </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">IP</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">.</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<div style="text-align: left; text-indent: 0; padding: 0 0 0 0; margin: 0 0 0 0;"><table style="width:100%; border:solid thin #a0a0a0; border-spacing:2px;">
+<tr>
+<td style="vertical-align:middle; padding:10px; border:solid thin #a0a0a0;"><p><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Здесь короткая программа, которая демонстрирует использование команды </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">MOV</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">:</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p class="p_CodeExample" style="page-break-inside: avoid;"><span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">#MAKE_COM#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;команда&nbsp;компилятору&nbsp;для&nbsp;создания&nbsp;СОМ-файла.</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">ORG&nbsp;100h&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;директива,&nbsp;необходимая&nbsp;для&nbsp;COM-программы.</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">MOV&nbsp;AX,&nbsp;0B800h&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;установить&nbsp;AX&nbsp;в&nbsp;шестнадцатиричное&nbsp;значение&nbsp;B800h.</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">MOV&nbsp;DS,&nbsp;AX&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;копировать&nbsp;значение&nbsp;из&nbsp;AX&nbsp;в&nbsp;DS.</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">MOV&nbsp;CL,&nbsp;'A'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;установить&nbsp;в&nbsp;CL&nbsp;ASCII-код&nbsp;символа&nbsp;'A',&nbsp;т.е.&nbsp;41h.</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">MOV&nbsp;CH,&nbsp;01011111b&nbsp;;&nbsp;установить&nbsp;CH&nbsp;в&nbsp;двоичное&nbsp;значение.</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">MOV&nbsp;BX,&nbsp;15Eh&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;установить&nbsp;BX&nbsp;в&nbsp;15Eh.</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">MOV&nbsp;[BX],&nbsp;CX&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;копировать&nbsp;содержимое&nbsp;из&nbsp;CX&nbsp;в&nbsp;память&nbsp;с&nbsp;адресом&nbsp;B800:015E</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">RET&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;вернуться&nbsp;в&nbsp;операционную&nbsp;систему.</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Вы можете </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">скопировать и вставить</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> вышеописанную программу в редактор кода </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-style: italic;">Emu8086</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">, и нажать кнопку [</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">Compile and Emulate</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">] (или нажать клавишу </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">F5</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> на клавиатуре).</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Окно эмулятора должно открыться с загруженной программой. Щелкните кнопку [</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">Single Step</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">] (пошаговый режим) и наблюдайте за содержимым регистров.</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Как </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">скопировать и вставить</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">:</span></p>
+<p class="p_Normal" style="text-indent: 0; padding-left: 20px; margin: 0 0 0 20px;"><span class="f_Normal" style="font-size:16px; font-family: 'Verdana';display:inline-block;width:20px;margin-left:-20px">1.</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Выделите техт программы с помощью мыши: щелкните перед текстом и, не отпуская кнопки, продвигайте мышь, пока не будет выделен нужный текст.</span></p>
+<p class="p_Normal" style="margin: 0 0 0 40px;">&nbsp;</p>
+<p class="p_Normal" style="text-indent: 0; padding-left: 20px; margin: 0 0 0 20px;"><span class="f_Normal" style="font-size:16px; font-family: 'Verdana';display:inline-block;width:20px;margin-left:-20px">2.</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Нажмите комбинацию клавиш </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">Ctrl + C</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> для копирования.</span></p>
+<p class="p_Normal" style="margin: 0 0 0 40px;">&nbsp;</p>
+<p class="p_Normal" style="text-indent: 0; padding-left: 20px; margin: 0 0 0 20px;"><span class="f_Normal" style="font-size:16px; font-family: 'Verdana';display:inline-block;width:20px;margin-left:-20px">3.</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Перейдите в редактор кода </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-style: italic;">Emu8086</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> и нажмите комбинацию клавиш </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">Ctrl + V</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">, чтобы вставить текст.</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Как вы могли догадаться, точка с запятой (&quot;</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">;</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">&quot;) используется для комментариев. Все символы, которые следуют за &quot;</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">;</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">&quot;, игнорируются компилятором.</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Вы должны увидеть нечто подобное, когда программа закончит свою работу:</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><img alt="screen01" width="426" height="174" style="margin:0;width:426px;height:174px;border:none" src="screen01.gif"/></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Фактически, вышеописанная программа записывает данные непосредственно в видеопамять, так что </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">MOV</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> - это очень мощная инструкция.</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<hr style="height:2px; color:#000000; border-width:0; background-color:#000000;" /><p style="text-align: center;"><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;"><a href="asm_tutorial_01.html" class="topiclink">&lt;&lt;&lt; Предыдущая часть &lt;&lt;&lt; </a></span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> &nbsp; &nbsp; </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;"><a href="asm_tutorial_03.html" class="topiclink">&gt;&gt;&gt; Следующая часть &gt;&gt;&gt;</a></span></p>
+<hr style="height:2px; color:#000000; border-width:0; background-color:#000000;" /><p><span style="color: #000000;">&nbsp;</span></p>
+</td>
+</tr>
+</table>
+</div>
+
+</td></tr></table>
+
+</body>
+</html>

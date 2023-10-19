@@ -1,0 +1,198 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+   <title>Перевод: Поляков А.В. http://www.avprog.narod.ru</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="" />
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+   <style type="text/css">
+     body { margin: 0px; background: #FFFFFF; }
+   </style>
+   <script type="text/javascript" src="jquery.js"></script>
+   <script type="text/javascript" src="helpman_settings.js"></script>
+   <script type="text/javascript" src="helpman_topicinit.js"></script>
+
+   <script type="text/javascript">
+     HMSyncTOC("index.html", "compiler.html");
+   </script>
+   <script type="text/javascript" src="highlight.js"></script>
+   <script type="text/javascript">
+     $(document).ready(function(){highlight();});
+   </script>
+</head>
+<body>
+
+
+<table style="width:100%; border:none; border-spacing:0px; padding:5px; background:#C0C0C0">
+  <tr style="vertical-align:middle">
+    <td style="text-align:left">
+      <h1 class="p_Heading1"><span class="f_Heading1">Перевод: Поляков А.В. http://www.avprog.narod.ru</span></h1>
+
+    </td>
+    <td style="text-align:right">
+     <a href="index.html">Top</a>&nbsp;
+     
+     
+    </td>
+  </tr>
+</table>
+
+
+<!-- Placeholder for topic body. -->
+<table style="width:100%;border:none;border-spacing:0px"><tr style="vertical-align:top"><td style="text-align:left;padding:5px">
+<p class="p_Normal">TEXT SCRAMBLING in TRIAL VERSION OUTPUT! In evaluation mode, Help+Manual will scramble individual characters in random words in your published output files. This is a limitation of the free trial version. <a href="https://www.helpandmanual.com" target="_blank" class="weblink"> This help system was created with an evaluation copy of Help+Manual.</a></p>
+<hr style="height:2px; color:#FF0000; border-width:0; background-color:#ff0000;" /><p class="p_Normal">&nbsp;</p>
+<div style="text-align: left; text-indent: 0; padding: 0 0 0 0; margin: 0 0 0 0;"><table style="width:80%; border:none; border-spacing:2px;">
+<tr>
+<td style="vertical-align:middle; padding:1px; border:none"><p><span style="font-size: 19px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">Компиляция кода Ассемблера</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="font-size: 11px; font-family: Verdana,Geneva,Arial,sans-serif;">Перевод: Поляков А.В. <a href="javascript:if(confirm('http://www.avprog.narod.ru/%20%20\n\nThis%20file%20was%20not%20retrieved%20by%20Teleport%20Ultra,%20because%20it%20is%20addressed%20on%20a%20domain%20or%20path%20outside%20the%20boundaries%20set%20for%20its%20Starting%20Address.%20%20\n\nDo%20you%20want%20to%20open%20it%20from%20the%20server?'))window.location='http://www.avprog.narod.ru/'" class="weblink">http://www.avprog.narod.ru</a></span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><img alt="compile01" width="593" height="289" style="margin:0;width:593px;height:289px;border:none" src="compile01.gif"/></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Напечатайте ваш код внутри текстовой области и щелкните кнопку </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">[Compile]</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">. Вас спросят, где сохранить откомпилированный файл. После завершения компиляции вы можете щелкнуть кнопку </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">[Emulate]</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> для загрузки откомпилированного файла в эмулятор.</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<hr style="height:2px; color:#000000; border-width:0; background-color:#000000;" /><p><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">Директивы, определяющие тип исполнимого файла:</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p class="p_CodeExample" style="page-break-inside: avoid;"><span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#MAKE_COM#</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#MAKE_BIN#</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#MAKE_BOOT#</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#MAKE_EXE#</span></p>
+<p><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Вы можете вставить эти директивы в исходный код для определения нужного вам типа исполнимого файла. В том случае, если компилятор не найдет ни одной из этих директив, он спросит у вас </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-style: italic;">тип файла</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> перед его созданием.</span></p>
+<hr style="height:2px; color:#000000; border-width:0; background-color:#000000;" /><p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">Описание типов исполнимых файлов:</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p class="p_Normal" style="text-indent: 0; padding-left: 20px; margin: 0 0 0 20px;"><span class="f_Normal" style="font-size:16px; font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:20px;margin-left:-20px">&#8226;</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">#MAKE_COM#</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> - самый старый и самый простой формат исполнимого файла. Такие файлы загружаются с префиксом 100h (256 байтов). Выберите </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">СОМ Template</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> из меню </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">New</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">, если вы планируете компилировать COM-файл. Директива компилятора </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">ORG 100h</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> должна быть добавлена перед кодом. Выполнение всегда начинается с первого байта файла. Поддерживается командной строкой DOS и Windows.</span></p>
+<p class="p_Normal" style="margin: 0 0 0 40px;">&nbsp;</p>
+<p class="p_Normal" style="margin: 0 0 0 40px;">&nbsp;</p>
+<p class="p_Normal" style="margin: 0 0 0 40px;">&nbsp;</p>
+<p class="p_Normal" style="text-indent: 0; padding-left: 20px; margin: 0 0 0 20px;"><span class="f_Normal" style="font-size:16px; font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:20px;margin-left:-20px">&#8226;</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">#MAKE_EXE#</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> - более &quot;продвинутый&quot; формат исполнимого файла. Не ограничены размер и количество сегментов. Сегмент стека должен быть определен в программе. Вы можете выбрать </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">EXE Template</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> из меню </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">New</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> для создания простой ЕХЕ-программы с определенными сегментмами Данных, Стека и Кода. Точка входа (где начинается выполнение) определяется программистом. Поддерживается командной строкой DOS и Windows.</span></p>
+<p class="p_Normal" style="margin: 0 0 0 40px;">&nbsp;</p>
+<p class="p_Normal" style="margin: 0 0 0 40px;">&nbsp;</p>
+<p class="p_Normal" style="margin: 0 0 0 40px;">&nbsp;</p>
+<p class="p_Normal" style="text-indent: 0; padding-left: 20px; margin: 0 0 0 20px;"><span class="f_Normal" style="font-size:16px; font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:20px;margin-left:-20px">&#8226;</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">#MAKE_BIN#</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> - простой исполнимый файл. Вы можете определить значения всех регистров, сегмент и смещение для области памяти, куда этот файл будет загружен. Если загрузить файл &quot;</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">MY.BIN</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">&quot; в эмулятор, он будет виден для файла &quot;</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">MY.BINF</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">&quot; и загрузится файл &quot;</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">MY.BIN</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">&quot; в местоположение, определенное в файле &quot;</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">MY.BINF</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">&quot;. Регистры также установятся с учетом информации из этого файла (откройте этот файл в редакторе для изменения или изучения). В том случае, если эмулятор не найдет файл &quot;</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">MY.BINF</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">&quot;, будет использоваться текущие значения регистров и файл &quot;</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">MY.BIN</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">&quot; загрузится в текущий </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">CS:IP</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">.</span></p>
+<p class="p_Normal" style="margin: 0 0 0 40px;"><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Выполнение начинается со значения в </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">CS:IP</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">.</span></p>
+<p class="p_Normal" style="margin: 0 0 0 40px;"><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Этот тип файла уникален для </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-style: italic;">Emu8086</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">.</span></p>
+<p class="p_Normal" style="margin: 0 0 0 40px;">&nbsp;</p>
+<p class="p_Normal" style="margin: 0 0 0 40px;"><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Файл </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">&quot;.BINF</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> создается автоматически компилятором, если он находит директиву </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">#MAKE_BIN#</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">.</span></p>
+<p class="p_Normal" style="margin: 0 0 0 40px;"><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; color: #ff0000;">ПРЕДУПРЕЖДЕНИЕ! если файл &quot;.binf&quot; существует, то он будет перезаписан!</span></p>
+<p class="p_Normal" style="margin: 0 0 0 40px;">&nbsp;</p>
+<div style="text-align: left; text-indent: 0; padding: 0 0 0 0; margin: 0 0 0 0;"><table style="width:80%; border:solid thin #a0a0a0; border-spacing:2px;">
+<tr>
+<td style="vertical-align:middle; padding:10px; border:solid thin #a0a0a0;"><p class="p_CodeExample" style="page-break-inside: avoid;"><span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">&nbsp;#LOAD_SEGMENT=1234#</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">&nbsp;#LOAD_OFFSET=0000#</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">&nbsp;#AL=12#</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">&nbsp;#AH=34#</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">&nbsp;#BH=00#</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">&nbsp;#BL=00#</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">&nbsp;#CH=00#</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">&nbsp;#CL=00#</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">&nbsp;#DH=00#</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">&nbsp;#DL=00#</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">&nbsp;#DS=0000#</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">&nbsp;#ES=0000#</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">&nbsp;#SI=0000#</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">&nbsp;#DI=0000#</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">&nbsp;#BP=0000#</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">&nbsp;#CS=1234#</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">&nbsp;#IP=0000#</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">&nbsp;#SS=0000#</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">&nbsp;#SP=0000#</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="p_Normal" style="margin: 0 0 0 40px;">&nbsp;</p>
+<p class="p_Normal" style="margin: 0 0 0 40px;"><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Значения должны быть шестнадцатиричными!</span></p>
+<p class="p_Normal" style="margin: 0 0 0 40px;">&nbsp;</p>
+<p class="p_Normal" style="margin: 0 0 0 40px;"><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Если эти значения не определены, то они устанавливаются по умолчанию:</span></p>
+<p class="p_Normal" style="margin: 0 0 0 40px;"><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold; color: #008000;">LOAD_SEGMENT = 0100</span></p>
+<p class="p_Normal" style="margin: 0 0 0 40px;"><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold; color: #008000;">LOAD_OFFSET = 0000</span></p>
+<p class="p_Normal" style="margin: 0 0 0 40px;"><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold; color: #008000;">CS = ES = SS = DS = 0100</span></p>
+<p class="p_Normal" style="margin: 0 0 0 40px;"><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold; color: #008000;">IP = 0000</span></p>
+<p class="p_Normal" style="margin: 0 0 0 40px;">&nbsp;</p>
+<p class="p_Normal" style="margin: 0 0 0 40px;"><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Если </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">LOAD_SEGMENT</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> и </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">LOAD_OFFSET</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> не определены, то используются значения </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">CS</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> и </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">IP</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">, и наоборот.</span></p>
+<p class="p_Normal" style="margin: 0 0 0 40px;">&nbsp;</p>
+<p class="p_Normal" style="margin: 0 0 0 40px;">&nbsp;</p>
+<p class="p_Normal" style="margin: 0 0 0 40px;"><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Если значение </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">Load to offset</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> не равно нулю (0000), то </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">ORG ????h</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> должна быть добавлена в файл </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">.BIN</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">, где </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">????h</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> - это </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-style: italic;">смещение для загрузки</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">. Это должно быть сделано для того, чтобы компилятор мог вычислить правильные адреса.</span></p>
+<p class="p_Normal" style="margin: 0 0 0 40px;">&nbsp;</p>
+<p class="p_Normal" style="margin: 0 0 0 40px;">&nbsp;</p>
+<p class="p_Normal" style="margin: 0 0 0 40px;">&nbsp;</p>
+<p class="p_Normal" style="text-indent: 0; padding-left: 20px; margin: 0 0 0 20px;"><span class="f_Normal" style="font-size:16px; font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:20px;margin-left:-20px">&#8226;</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">#MAKE_BOOT#</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> - эта директива копирует первую дорожку дискеты (загрузочный сектор).</span></p>
+<p class="p_Normal" style="margin: 0 0 0 40px;"><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Вы можете записать загрузочный сектор виртуального дисковода (FLOPPY_0) через меню эмулятора:</span></p>
+<p class="p_Normal" style="margin: 0 0 0 40px;"><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">[Virtual Drive] -&gt; [Write 512 bytes at 7C00 to Boot Sector]</span></p>
+<p class="p_Normal" style="margin: 0 0 0 40px;"><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Сначала вы должны откомпилировать &quot;</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">.boot</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">&quot;-файл, а затем загрузить его в эмулятор (см. &quot;</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">micro-os_loader.asm</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">&quot; и &quot;</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">micro-os_kernel.asm</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">&quot; в разделе &quot;Samples&quot;).</span></p>
+<p class="p_Normal" style="margin: 0 0 0 40px;">&nbsp;</p>
+<p class="p_Normal" style="margin: 0 0 0 40px;"><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Затем выберите в меню </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">[Virtual Drive] -&gt; [Boot from Floppy]</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">, чтобы загрузить эмулятор с виртуального дисковода.</span></p>
+<p class="p_Normal" style="margin: 0 0 0 40px;">&nbsp;</p>
+<p class="p_Normal" style="margin: 0 0 0 40px;"><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Затем, если вам любопытно, вы можете записать виртуальную дискету на реальную дискету и загрузить с нее ваш компьютер. Я рекомендую использовать &quot;RawWrite for Windows&quot; с: <a href="javascript:if(confirm('http://uranus.it.swin.edu.au/~jn/linux/rawwrite.htm%20%20\n\nThis%20file%20was%20not%20retrieved%20by%20Teleport%20Ultra,%20because%20it%20is%20addressed%20on%20a%20domain%20or%20path%20outside%20the%20boundaries%20set%20for%20its%20Starting%20Address.%20%20\n\nDo%20you%20want%20to%20open%20it%20from%20the%20server?'))window.location='http://uranus.it.swin.edu.au/~jn/linux/rawwrite.htm'" class="weblink">http://uranus.it.swin.edu.au/~jn/linux/rawwrite.htm</a></span></p>
+<p class="p_Normal" style="margin: 0 0 0 40px;"><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">(учтите, что &quot;</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">micro-os_loader.asm</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">&quot; не использует MS-DOS-совместимый загрузочный сектор, так что лучше использовать чистую дискету, хотя она должна быть отформатирована IBM (MS-DOS)).</span></p>
+<p class="p_Normal" style="margin: 0 0 0 40px;"><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Директива компилятора </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">ORG 7C00h</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> должна быть добавлена перед кодом, если компьютер начинает загружаться с первой дорожки дискеты в адрес 0000:7C00.</span></p>
+<p class="p_Normal" style="margin: 0 0 0 40px;"><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Размер </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">.BOOT</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">-файла должен быть менее 512 байтов (ограничен размером сектора дискеты).</span></p>
+<p class="p_Normal" style="margin: 0 0 0 40px;"><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Выполнение всегда начинается с первого байта файла. Этот тип файла уникален для эмулятора </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-style: italic;">Emu8086</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">.</span></p>
+<p class="p_Normal" style="margin: 0 0 0 40px;">&nbsp;</p>
+<hr style="height:2px; color:#000000; border-width:0; background-color:#000000;" /><p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">Обработка ошибок</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Компилятор выводит отчет об ошибках в отдельном окне:</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><img alt="compile03" width="511" height="401" style="margin:0;width:511px;height:401px;border:none" src="compile03.gif"/></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="font-size: 16px; font-family: Fixedsys;">MOV DS, 100</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> - это недопустимая команда, потому что в сегментный регистр нельзя устанавливать непосредственное значение - должны использоваться регистры общего назначения:</span></p>
+<p><span style="font-size: 16px; font-family: Fixedsys;">MOV AX, 100</span></p>
+<p><span style="font-size: 16px; font-family: Fixedsys;">MOV DS, AX</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="font-size: 16px; font-family: Fixedsys;">MOV AL, 300</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> - это недопустимая команда, т.к. регистр </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">AL</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> имеет только 8 битов, и его максимальное значение 255 (или 11111111b), а минимальное -128.</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<hr style="height:2px; color:#000000; border-width:0; background-color:#000000;" /><p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Компилятор делает несколько проходов перед генерацией правильного машинного кода. Если он находит ошибку и не выполняет требуемое количество проходов, он может выдать неправильное сообщение об ошибке. Например:</span></p>
+<p class="p_CodeExample" style="page-break-inside: avoid;"><span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">#make_COM#</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">ORG&nbsp;100h</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">MOV&nbsp;AX,&nbsp;0</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">MOV&nbsp;CX,&nbsp;5</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">m1:&nbsp;INC&nbsp;AX</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">LOOP&nbsp;m1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;это&nbsp;не&nbsp;настоящая&nbsp;ошибка!</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">MOV&nbsp;AL,&nbsp;0FFFFh&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;ошибка&nbsp;здесь.</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">RET</span></p>
+<p><span style="font-family: 'MS Sans Serif',Geneva,sans-serif;">Список генерируемых ошибок:</span></p>
+<p><span style="font-family: 'MS Sans Serif',Geneva,sans-serif;">(7) Condition Jump out of range (Условие перехода за пределами диапазона)!: LOOP m1</span></p>
+<p><span style="font-family: 'MS Sans Serif',Geneva,sans-serif;">(9) Wrong parameters (Неправильнве параметры): MOV AL, 0FFFFh</span></p>
+<p><span style="font-family: 'MS Sans Serif',Geneva,sans-serif;">(9) Operands do not match (Операнды не соответствуют): Second operand is over 8 bits (Второй операнд более 8 битов)!</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Первое сообщение (7) - неправильное. Компилятор не закончил вычисление смещений для меток, поэтому он думает, что смещение метки </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">m1</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> - это </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">0000</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">. Этот адрес лежит за пределами диапазона, т.к. мы начинаем со смещения </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">100h</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">.</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Внесите исправления в эту строку: </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">MOV AL, 0FFFFh</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> (AL не может содержать значение </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">0FFFFh</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">). Это устранит обе ошибки! Например:</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p class="p_CodeExample" style="page-break-inside: avoid;"><span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">#make_COM#</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">ORG&nbsp;100h</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">MOV&nbsp;AX,&nbsp;0</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">MOV&nbsp;CX,&nbsp;5</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">m1:&nbsp;INC&nbsp;AX</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">LOOP&nbsp;m1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;тот&nbsp;же&nbsp;самый&nbsp;код&nbsp;без&nbsp;ошибки!</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">MOV&nbsp;AL,&nbsp;0FFh&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;все!</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">RET</span></p>
+<hr style="height:2px; color:#000000; border-width:0; background-color:#000000;" /><p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">При сохранении компилируемого файла, компилятор также сохраняет 2 других файла, которые используются эмулятором для отображения фактического исходного кода при его исполнении и выборе соответствующей строки.</span></p>
+<p class="p_Normal" style="text-indent: 0; padding-left: 20px; margin: 0 0 0 20px;"><span class="f_Normal" style="font-size:16px; font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:20px;margin-left:-20px">&#8226;</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">*.~asm</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> - этот файл содержит оригинальный исходный код, который был использован для создания исполнимого файла.</span></p>
+<p class="p_Normal" style="margin: 0 0 0 40px;">&nbsp;</p>
+<p class="p_Normal" style="text-indent: 0; padding-left: 20px; margin: 0 0 0 20px;"><span class="f_Normal" style="font-size:16px; font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:20px;margin-left:-20px">&#8226;</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">*.debug</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> - этот файл содержит информацию, которая позволяет эмулятору выбирать строки оригинального исходного кода во время выполнения машинного кода.</span></p>
+<p class="p_Normal" style="margin: 0 0 0 40px;">&nbsp;</p>
+<p class="p_Normal" style="text-indent: 0; padding-left: 20px; margin: 0 0 0 20px;"><span class="f_Normal" style="font-size:16px; font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:20px;margin-left:-20px">&#8226;</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">*.symbol</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> - Таблица символов. Она содержит информацию, которая позволяет отображать окно &quot;Variables&quot; (Переменные). Это текстовый файл, так что вы можете посмотреть его из текстового редактора.</span></p>
+<p class="p_Normal" style="margin: 0 0 0 40px;">&nbsp;</p>
+<p class="p_Normal" style="text-indent: 0; padding-left: 20px; margin: 0 0 0 20px;"><span class="f_Normal" style="font-size:16px; font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:20px;margin-left:-20px">&#8226;</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">*.binf</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> - этот файл содержит информацию, которая используется эмулятором для загрузки BIN-файла в указанное местоположение, и установки значений регистров предшествующих выполнению (создается только в том случае, если исполнимый файл - это BIN-файл).</span></p>
+<p class="p_Normal" style="margin: 0 0 0 40px;">&nbsp;</p>
+<hr style="height:2px; color:#000000; border-width:0; background-color:#000000;" /></td>
+</tr>
+</table>
+</div>
+<p class="p_Normal">&nbsp;</p>
+
+</td></tr></table>
+
+</body>
+</html>

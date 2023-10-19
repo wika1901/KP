@@ -1,0 +1,531 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+   <title>Перевод: Поляков А.В. http://www.avprog.narod.ru</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="" />
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+   <style type="text/css">
+     body { margin: 0px; background: #FFFFFF; }
+   </style>
+   <script type="text/javascript" src="jquery.js"></script>
+   <script type="text/javascript" src="helpman_settings.js"></script>
+   <script type="text/javascript" src="helpman_topicinit.js"></script>
+
+   <script type="text/javascript">
+     HMSyncTOC("index.html", "asm_tutorial_07.html");
+   </script>
+   <script type="text/javascript" src="highlight.js"></script>
+   <script type="text/javascript">
+     $(document).ready(function(){highlight();});
+   </script>
+</head>
+<body>
+
+
+<table style="width:100%; border:none; border-spacing:0px; padding:5px; background:#C0C0C0">
+  <tr style="vertical-align:middle">
+    <td style="text-align:left">
+      <h1 class="p_Heading1"><span class="f_Heading1">Перевод: Поляков А.В. http://www.avprog.narod.ru</span></h1>
+
+    </td>
+    <td style="text-align:right">
+     <a href="index.html">Top</a>&nbsp;
+     
+     
+    </td>
+  </tr>
+</table>
+
+
+<!-- Placeholder for topic body. -->
+<table style="width:100%;border:none;border-spacing:0px"><tr style="vertical-align:top"><td style="text-align:left;padding:5px">
+<p class="p_Normal">TEXT SCRAMBLING in TRIAL VERSION OUTPUT! In evaluation mode, Help+Manual will scramble individual characters in random words in your published output files. This is a limitation of the free trial version. <a href="https://www.helpandmanual.com" target="_blank" class="weblink"> This help system was created with an evaluation copy of Help+Manual.</a></p>
+<hr style="height:2px; color:#FF0000; border-width:0; background-color:#ff0000;" /><p class="p_Normal">&nbsp;</p>
+<div style="text-align: left; text-indent: 0; padding: 0 0 0 0; margin: 0 0 0 0;"><table style="width:80%; border:none; border-spacing:2px;">
+<tr>
+<td style="vertical-align:middle; padding:1px; border:none"><p><span style="font-size: 19px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">Уроки Ассемблера 8086 для начинающих (Часть 7)</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="font-size: 24px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">Управление ходом программы</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="font-size: 11px; font-family: Verdana,Geneva,Arial,sans-serif;">Перевод: Поляков А.В. <a href="javascript:if(confirm('http://www.avprog.narod.ru/%20%20\n\nThis%20file%20was%20not%20retrieved%20by%20Teleport%20Ultra,%20because%20it%20is%20addressed%20on%20a%20domain%20or%20path%20outside%20the%20boundaries%20set%20for%20its%20Starting%20Address.%20%20\n\nDo%20you%20want%20to%20open%20it%20from%20the%20server?'))window.location='http://www.avprog.narod.ru/'" class="weblink">http://www.avprog.narod.ru</a></span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Управление ходом программы - очень важная вещь. Это то, что заставляет программу принимать решения, в зависимости от некоторых условий.</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p class="p_Normal" style="text-indent: 0; padding-left: 20px; margin: 0 0 0 20px;"><span class="f_Normal" style="font-size:16px; font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:20px;margin-left:-20px">&#8226;</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">Безусловные переходы</span></p>
+<p class="p_Normal" style="margin: 0 0 0 40px;">&nbsp;</p>
+<p class="p_Normal" style="margin: 0 0 0 40px;"><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Основная команда, которая передает управление в другую точку программы - это </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">JMP</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">.</span></p>
+<p class="p_Normal" style="margin: 0 0 0 40px;">&nbsp;</p>
+<p class="p_Normal" style="margin: 0 0 0 40px;"><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Основной синтаксис команды </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">JMP</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">:</span></p>
+<p class="p_Normal" style="margin: 14px 0 14px 40px;"><span style="font-size: 16px; font-family: Fixedsys;">JMP </span><span style="font-size: 16px; font-family: Fixedsys; text-decoration: underline;">метка</span></p>
+<p class="p_Normal" style="margin: 0 0 0 40px;"><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Чтобы объявить </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-style: italic;">метку</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> в вашей программе, просто напечатайте ее имя и в конце добавьте двоеточие &quot;</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">:</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">&quot;. Метка может быть любой комбинацией символов, но не должна начинаться с цифры. Например, ниже представлены три правильных объявления меток:</span></p>
+<p class="p_Normal" style="margin: 14px 0 0 40px;"><span style="font-size: 16px; font-family: Fixedsys;">label1:</span></p>
+<p class="p_Normal" style="margin: 0 0 0 40px;"><span style="font-size: 16px; font-family: Fixedsys;">label2:</span></p>
+<p class="p_Normal" style="margin: 0 0 14px 40px;"><span style="font-size: 16px; font-family: Fixedsys;">a:</span></p>
+<p class="p_Normal" style="margin: 0 0 0 40px;"><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Метка может быть объявлена на отдельной строке или перед любой другой командой, например:</span></p>
+<p class="p_Normal" style="margin: 14px 0 0 40px;"><span style="font-size: 16px; font-family: Fixedsys;">x1:</span></p>
+<p class="p_Normal" style="margin: 0 0 0 40px;"><span style="font-size: 16px; font-family: Fixedsys;">MOV AX, 1</span></p>
+<p class="p_Normal" style="margin: 0 0 0 40px;">&nbsp;</p>
+<p class="p_Normal" style="margin: 0 0 14px 40px;"><span style="font-size: 16px; font-family: Fixedsys;">x2: MOV AX, 2</span></p>
+<p class="p_Normal" style="margin: 0 0 0 40px;"><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Здесь представлен пример команды </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">JMP</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">:</span></p>
+<p class="p_Normal" style="margin: 0 0 0 40px;">&nbsp;</p>
+<div style="text-align: left; text-indent: 0; padding: 0 0 0 0; margin: 0 0 0 0;"><table style="width:50%; border:solid thin #a0a0a0; border-spacing:2px;">
+<tr>
+<td style="vertical-align:middle; padding:10px; border:solid thin #a0a0a0;"><p class="p_CodeExample" style="page-break-inside: avoid;"><span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">ORG&nbsp;&nbsp;&nbsp;&nbsp;100h</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">MOV&nbsp;&nbsp;&nbsp;&nbsp;AX,&nbsp;5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;записать&nbsp;в&nbsp;AX&nbsp;число&nbsp;5.</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">MOV&nbsp;&nbsp;&nbsp;&nbsp;BX,&nbsp;2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;записать&nbsp;в&nbsp;ВX&nbsp;число&nbsp;5.</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">JMP&nbsp;&nbsp;&nbsp;&nbsp;calc&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;перейти&nbsp;к&nbsp;'calc'.</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">back:&nbsp;&nbsp;JMP&nbsp;stop&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;перейти&nbsp;к&nbsp;'stop'.</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">calc:</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">ADD&nbsp;&nbsp;&nbsp;&nbsp;AX,&nbsp;BX&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;прибавить&nbsp;BX&nbsp;к&nbsp;AX.</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">JMP&nbsp;&nbsp;&nbsp;&nbsp;back&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;перейти&nbsp;к&nbsp;'back'.</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">stop:</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">RET&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;вернуться&nbsp;в&nbsp;операционную&nbsp;систему.</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">END&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;директива&nbsp;для&nbsp;прекращения&nbsp;компиляции.</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="p_Normal" style="margin: 0 0 0 40px;">&nbsp;</p>
+<p class="p_Normal" style="margin: 0 0 0 40px;"><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Конечно, есть более простой путь для вычисления результата с двумя числами, но это хороший пример применения команды </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">JMP</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">.</span></p>
+<p class="p_Normal" style="margin: 0 0 0 40px;"><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Как вы можете видеть из этого примера, команда </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">JMP</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> может передавать управление другому участку программы, который может находиться как после этой команды, так и перед ней. Этот переход может быть осуществлен в пределах текущего сегмента кода (65,535 байтов).</span></p>
+<p class="p_Normal" style="margin: 0 0 0 40px;">&nbsp;</p>
+<p class="p_Normal" style="margin: 0 0 0 40px;">&nbsp;</p>
+<p class="p_Normal" style="text-indent: 0; padding-left: 20px; margin: 0 0 0 20px;"><span class="f_Normal" style="font-size:16px; font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:20px;margin-left:-20px">&#8226;</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">Короткие условные переходы</span></p>
+<p class="p_Normal" style="margin: 0 0 0 40px;">&nbsp;</p>
+<p class="p_Normal" style="margin: 0 0 0 40px;"><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Подобно команде </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">JMP</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">, которая выполняет безусловный переход, существуют команды, которые осуществляют условный переход (переход, который осуществляется только в том случае, если выполняется определенное условие). Эти команды разделяются на три группы. Первая группа только проверяет отдельный флаг, вторая - сравнивает числа со знаком, третья - сравнивает числа без знака.</span></p>
+<p class="p_Normal" style="margin: 0 0 0 40px;">&nbsp;</p>
+<p class="p_Normal" style="margin: 0 0 0 40px;"><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">Команды перехода, проверяющие одиночный флаг</span></p>
+<p class="p_Normal" style="margin: 0 0 0 40px;">&nbsp;</p>
+<div style="text-align: left; text-indent: 0; padding: 0 0 0 0; margin: 0 0 0 0;"><table style="border:solid thin #a0a0a0; border-spacing:2px;">
+<tr>
+<td style="vertical-align:middle; background-color:#FFFF00; padding:7px; border:solid thin #a0a0a0;"><p><span style="font-size: 16px; font-family: Fixedsys;">Команда</span></p>
+</td>
+<td style="vertical-align:middle; background-color:#FFFF00; padding:7px; border:solid thin #a0a0a0;"><p><span style="font-size: 16px; font-family: Fixedsys;">Описание</span></p>
+</td>
+<td style="vertical-align:middle; background-color:#FFFF00; padding:7px; border:solid thin #a0a0a0;"><p><span style="font-size: 16px; font-family: Fixedsys;">Условие</span></p>
+</td>
+<td style="vertical-align:middle; background-color:#FFFF00; padding:7px; border:solid thin #a0a0a0;"><p><span style="font-size: 16px; font-family: Fixedsys;">Обратная команда</span></p>
+</td>
+</tr>
+<tr>
+<td style="vertical-align:middle; padding:7px; border:solid thin #a0a0a0;"><p><span style="font-size: 16px; font-family: Fixedsys;">JZ , JE</span></p>
+</td>
+<td style="vertical-align:middle; padding:7px; border:solid thin #a0a0a0;"><p><span style="font-size: 16px; font-family: Fixedsys;">Переход, если &quot;равно&quot; (&quot;нуль&quot;). Т.е. если сравниваемые значения равны, то ZF = 1 и переход выполняется</span></p>
+</td>
+<td style="vertical-align:middle; padding:7px; border:solid thin #a0a0a0;"><p><span style="font-size: 16px; font-family: Fixedsys;"> ZF = 1</span></p>
+</td>
+<td style="vertical-align:middle; padding:7px; border:solid thin #a0a0a0;"><p><span style="font-size: 16px; font-family: Fixedsys;">JNZ, JNE</span></p>
+</td>
+</tr>
+<tr>
+<td style="vertical-align:middle; padding:7px; border:solid thin #a0a0a0;"><p><span style="font-size: 16px; font-family: Fixedsys;">JC , JB, JNAE</span></p>
+</td>
+<td style="vertical-align:middle; padding:7px; border:solid thin #a0a0a0;"><p><span style="font-size: 16px; font-family: Fixedsys;">Переход, если есть перенос (&quot;ниже&quot;, &quot;не выше или равно&quot;).</span></p>
+</td>
+<td style="vertical-align:middle; padding:7px; border:solid thin #a0a0a0;"><p><span style="font-size: 16px; font-family: Fixedsys;"> CF = 1</span></p>
+</td>
+<td style="vertical-align:middle; padding:7px; border:solid thin #a0a0a0;"><p><span style="font-size: 16px; font-family: Fixedsys;">JNC, JNB, JAE</span></p>
+</td>
+</tr>
+<tr>
+<td style="vertical-align:middle; padding:7px; border:solid thin #a0a0a0;"><p><span style="font-size: 16px; font-family: Fixedsys;">JS</span></p>
+</td>
+<td style="vertical-align:middle; padding:7px; border:solid thin #a0a0a0;"><p><span style="font-size: 16px; font-family: Fixedsys;">Переход по знаку.</span></p>
+</td>
+<td style="vertical-align:middle; padding:7px; border:solid thin #a0a0a0;"><p><span style="font-size: 16px; font-family: Fixedsys;"> SF = 1</span></p>
+</td>
+<td style="vertical-align:middle; padding:7px; border:solid thin #a0a0a0;"><p><span style="font-size: 16px; font-family: Fixedsys;">JNS</span></p>
+</td>
+</tr>
+<tr>
+<td style="vertical-align:middle; padding:7px; border:solid thin #a0a0a0;"><p><span style="font-size: 16px; font-family: Fixedsys;">JO</span></p>
+</td>
+<td style="vertical-align:middle; padding:7px; border:solid thin #a0a0a0;"><p><span style="font-size: 16px; font-family: Fixedsys;">Переход по переполнению.</span></p>
+</td>
+<td style="vertical-align:middle; padding:7px; border:solid thin #a0a0a0;"><p><span style="font-size: 16px; font-family: Fixedsys;"> OF = 1</span></p>
+</td>
+<td style="vertical-align:middle; padding:7px; border:solid thin #a0a0a0;"><p><span style="font-size: 16px; font-family: Fixedsys;">JNO</span></p>
+</td>
+</tr>
+<tr>
+<td style="vertical-align:middle; padding:7px; border:solid thin #a0a0a0;"><p><span style="font-size: 16px; font-family: Fixedsys;">JPE, JP</span></p>
+</td>
+<td style="vertical-align:middle; padding:7px; border:solid thin #a0a0a0;"><p><span style="font-size: 16px; font-family: Fixedsys;">Переход, если есть паритет или паритет четный.</span></p>
+</td>
+<td style="vertical-align:middle; padding:7px; border:solid thin #a0a0a0;"><p><span style="font-size: 16px; font-family: Fixedsys;"> PF = 1</span></p>
+</td>
+<td style="vertical-align:middle; padding:7px; border:solid thin #a0a0a0;"><p><span style="font-size: 16px; font-family: Fixedsys;">JPO</span></p>
+</td>
+</tr>
+<tr>
+<td style="vertical-align:middle; padding:7px; border:solid thin #a0a0a0;"><br />
+</td>
+<td style="vertical-align:top; padding:7px; border:solid thin #a0a0a0;"><br />
+</td>
+<td style="vertical-align:top; padding:7px; border:solid thin #a0a0a0;"><br />
+</td>
+<td style="vertical-align:top; padding:7px; border:solid thin #a0a0a0;"><br />
+</td>
+</tr>
+<tr>
+<td style="vertical-align:middle; padding:7px; border:solid thin #a0a0a0;"><p><span style="font-size: 16px; font-family: Fixedsys;">JNZ , JNE</span></p>
+</td>
+<td style="vertical-align:middle; padding:7px; border:solid thin #a0a0a0;"><p><span style="font-size: 16px; font-family: Fixedsys;">Переход по &quot;не равно&quot; или по &quot;не нуль&quot;</span></p>
+</td>
+<td style="vertical-align:middle; padding:7px; border:solid thin #a0a0a0;"><p><span style="font-size: 16px; font-family: Fixedsys;"> ZF = 0</span></p>
+</td>
+<td style="vertical-align:middle; padding:7px; border:solid thin #a0a0a0;"><p><span style="font-size: 16px; font-family: Fixedsys;">JZ, JE</span></p>
+</td>
+</tr>
+<tr>
+<td style="vertical-align:middle; padding:7px; border:solid thin #a0a0a0;"><p><span style="font-size: 16px; font-family: Fixedsys;">JNC , JNB, JAE</span></p>
+</td>
+<td style="vertical-align:middle; padding:7px; border:solid thin #a0a0a0;"><p><span style="font-size: 16px; font-family: Fixedsys;">Переход, если нет переноса (&quot;выше или равно&quot; или &quot;не ниже&quot;).</span></p>
+</td>
+<td style="vertical-align:middle; padding:7px; border:solid thin #a0a0a0;"><p><span style="font-size: 16px; font-family: Fixedsys;"> CF = 0</span></p>
+</td>
+<td style="vertical-align:middle; padding:7px; border:solid thin #a0a0a0;"><p><span style="font-size: 16px; font-family: Fixedsys;">JC, JB, JNAE</span></p>
+</td>
+</tr>
+<tr>
+<td style="vertical-align:middle; padding:7px; border:solid thin #a0a0a0;"><p><span style="font-size: 16px; font-family: Fixedsys;">JNS</span></p>
+</td>
+<td style="vertical-align:middle; padding:7px; border:solid thin #a0a0a0;"><p><span style="font-size: 16px; font-family: Fixedsys;">Переход, если нет знака.</span></p>
+</td>
+<td style="vertical-align:middle; padding:7px; border:solid thin #a0a0a0;"><p><span style="font-size: 16px; font-family: Fixedsys;"> SF = 0</span></p>
+</td>
+<td style="vertical-align:middle; padding:7px; border:solid thin #a0a0a0;"><p><span style="font-size: 16px; font-family: Fixedsys;">JS</span></p>
+</td>
+</tr>
+<tr>
+<td style="vertical-align:middle; padding:7px; border:solid thin #a0a0a0;"><p><span style="font-size: 16px; font-family: Fixedsys;">JNO</span></p>
+</td>
+<td style="vertical-align:middle; padding:7px; border:solid thin #a0a0a0;"><p><span style="font-size: 16px; font-family: Fixedsys;">Переход, если нет переполнения.</span></p>
+</td>
+<td style="vertical-align:middle; padding:7px; border:solid thin #a0a0a0;"><p><span style="font-size: 16px; font-family: Fixedsys;"> OF = 0</span></p>
+</td>
+<td style="vertical-align:middle; padding:7px; border:solid thin #a0a0a0;"><p><span style="font-size: 16px; font-family: Fixedsys;">JO</span></p>
+</td>
+</tr>
+<tr>
+<td style="vertical-align:middle; padding:7px; border:solid thin #a0a0a0;"><p><span style="font-size: 16px; font-family: Fixedsys;">JPO, JNP</span></p>
+</td>
+<td style="vertical-align:middle; padding:7px; border:solid thin #a0a0a0;"><p><span style="font-size: 16px; font-family: Fixedsys;">Переход, если нет паритета или паритет нечетный.</span></p>
+</td>
+<td style="vertical-align:middle; padding:7px; border:solid thin #a0a0a0;"><p><span style="font-size: 16px; font-family: Fixedsys;"> PF = 0</span></p>
+</td>
+<td style="vertical-align:middle; padding:7px; border:solid thin #a0a0a0;"><p><span style="font-size: 16px; font-family: Fixedsys;">JPE, JP</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="p_Normal" style="margin: 0 0 0 40px;">&nbsp;</p>
+<p class="p_Normal" style="margin: 0 0 0 40px;">&nbsp;</p>
+<p class="p_Normal" style="margin: 0 0 0 40px;"><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Как вы можете видеть, существуют команды, которые выполняют одинаковые действия. Это нормально. Они даже ассемблируются в одинаковый машинный код, поэтому будет неплохо, если вы запомните, что при компиляции команды </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">JE</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">, после дизассемблирования вы получите ее как: </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">JZ</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">.</span></p>
+<p class="p_Normal" style="margin: 0 0 0 40px;"><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Различные имена используются для того, чтобы делать программы более легкими для понимания и кодирования.</span></p>
+<p class="p_Normal" style="margin: 0 0 0 40px;">&nbsp;</p>
+<p class="p_Normal" style="margin: 0 0 0 40px;">&nbsp;</p>
+<p class="p_Normal" style="margin: 0 0 0 40px;"><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">Команды перехода для чисел со знаками</span></p>
+<p class="p_Normal" style="margin: 0 0 0 40px;">&nbsp;</p>
+<div style="text-align: left; text-indent: 0; padding: 0 0 0 0; margin: 0 0 0 0;"><table style="border:solid thin #a0a0a0; border-spacing:2px;">
+<tr>
+<td style="vertical-align:middle; background-color:#FFFF00; padding:7px; border:solid thin #a0a0a0;"><p><span style="font-size: 16px; font-family: Fixedsys;">Команда</span></p>
+</td>
+<td style="vertical-align:middle; background-color:#FFFF00; padding:7px; border:solid thin #a0a0a0;"><p><span style="font-size: 16px; font-family: Fixedsys;">Описание</span></p>
+</td>
+<td style="vertical-align:middle; background-color:#FFFF00; padding:7px; border:solid thin #a0a0a0;"><p><span style="font-size: 16px; font-family: Fixedsys;">Условие</span></p>
+</td>
+<td style="vertical-align:middle; background-color:#FFFF00; padding:7px; border:solid thin #a0a0a0;"><p><span style="font-size: 16px; font-family: Fixedsys;">Обратная команда</span></p>
+</td>
+</tr>
+<tr>
+<td style="vertical-align:middle; padding:7px; border:solid thin #a0a0a0;"><p><span style="font-size: 16px; font-family: Fixedsys;">JE , JZ</span></p>
+</td>
+<td style="vertical-align:middle; padding:7px; border:solid thin #a0a0a0;"><p><span style="font-size: 16px; font-family: Fixedsys;">Переход, если &quot;равно&quot; (</span><span style="font-size: 16px; font-family: Fixedsys; color: #ff0000;">=</span><span style="font-size: 16px; font-family: Fixedsys;">).</span></p>
+<p><span style="font-size: 16px; font-family: Fixedsys;">переход, если &quot;ноль&quot;.</span></p>
+</td>
+<td style="vertical-align:middle; padding:7px; border:solid thin #a0a0a0;"><p style="text-align: center;"><span style="font-size: 16px; font-family: Fixedsys;">ZF = 1</span></p>
+</td>
+<td style="vertical-align:middle; padding:7px; border:solid thin #a0a0a0;"><p><span style="font-size: 16px; font-family: Fixedsys;">JNE, JNZ</span></p>
+</td>
+</tr>
+<tr>
+<td style="vertical-align:middle; padding:7px; border:solid thin #a0a0a0;"><p><span style="font-size: 16px; font-family: Fixedsys;">JNE , JNZ</span></p>
+</td>
+<td style="vertical-align:middle; padding:7px; border:solid thin #a0a0a0;"><p><span style="font-size: 16px; font-family: Fixedsys;">Переход, если &quot;не равно&quot; (</span><span style="font-size: 16px; font-family: Fixedsys; color: #ff0000;">&lt;&gt;</span><span style="font-size: 16px; font-family: Fixedsys;">).</span></p>
+<p><span style="font-size: 16px; font-family: Fixedsys;">Переход, если &quot;не ноль&quot;.</span></p>
+</td>
+<td style="vertical-align:middle; padding:7px; border:solid thin #a0a0a0;"><p style="text-align: center;"><span style="font-size: 16px; font-family: Fixedsys;">ZF = 0</span></p>
+</td>
+<td style="vertical-align:middle; padding:7px; border:solid thin #a0a0a0;"><p><span style="font-size: 16px; font-family: Fixedsys;">JE, JZ</span></p>
+</td>
+</tr>
+<tr>
+<td style="vertical-align:middle; padding:7px; border:solid thin #a0a0a0;"><p><span style="font-size: 16px; font-family: Fixedsys;">JG , JNLE</span></p>
+</td>
+<td style="vertical-align:middle; padding:7px; border:solid thin #a0a0a0;"><p><span style="font-size: 16px; font-family: Fixedsys;">Переход, если &quot;больше&quot; (</span><span style="font-size: 16px; font-family: Fixedsys; color: #ff0000;">&gt;</span><span style="font-size: 16px; font-family: Fixedsys;">).</span></p>
+<p><span style="font-size: 16px; font-family: Fixedsys;">Переход, если &quot;не меньше или равно&quot; (</span><span style="font-size: 16px; font-family: Fixedsys; color: #ff0000;">not &lt;=</span><span style="font-size: 16px; font-family: Fixedsys;">).</span></p>
+</td>
+<td style="vertical-align:middle; padding:7px; border:solid thin #a0a0a0;"><p style="text-align: center;"><span style="font-size: 16px; font-family: Fixedsys;">ZF = 0</span></p>
+<p style="text-align: center;"><span style="font-size: 16px; font-family: Fixedsys;">and</span></p>
+<p style="text-align: center;"><span style="font-size: 16px; font-family: Fixedsys;">SF = OF</span></p>
+</td>
+<td style="vertical-align:middle; padding:7px; border:solid thin #a0a0a0;"><p><span style="font-size: 16px; font-family: Fixedsys;">JNG, JLE</span></p>
+</td>
+</tr>
+<tr>
+<td style="vertical-align:middle; padding:7px; border:solid thin #a0a0a0;"><p><span style="font-size: 16px; font-family: Fixedsys;">JL , JNGE</span></p>
+</td>
+<td style="vertical-align:middle; padding:7px; border:solid thin #a0a0a0;"><p><span style="font-size: 16px; font-family: Fixedsys;">Переход, если &quot;меньше&quot; (</span><span style="font-size: 16px; font-family: Fixedsys; color: #ff0000;">&lt;</span><span style="font-size: 16px; font-family: Fixedsys;">).</span></p>
+<p><span style="font-size: 16px; font-family: Fixedsys;">Переход, если &quot;не больше или равно&quot; (</span><span style="font-size: 16px; font-family: Fixedsys; color: #ff0000;">not &gt;=</span><span style="font-size: 16px; font-family: Fixedsys;">).</span></p>
+</td>
+<td style="vertical-align:middle; padding:7px; border:solid thin #a0a0a0;"><p style="text-align: center;"><span style="font-size: 16px; font-family: Fixedsys;">SF &lt;&gt; OF</span></p>
+</td>
+<td style="vertical-align:middle; padding:7px; border:solid thin #a0a0a0;"><p><span style="font-size: 16px; font-family: Fixedsys;">JNL, JGE</span></p>
+</td>
+</tr>
+<tr>
+<td style="vertical-align:middle; padding:7px; border:solid thin #a0a0a0;"><p><span style="font-size: 16px; font-family: Fixedsys;">JGE , JNL</span></p>
+</td>
+<td style="vertical-align:middle; padding:7px; border:solid thin #a0a0a0;"><p><span style="font-size: 16px; font-family: Fixedsys;">Переход, если &quot;больше или равно&quot; (</span><span style="font-size: 16px; font-family: Fixedsys; color: #ff0000;">&gt;=</span><span style="font-size: 16px; font-family: Fixedsys;">).</span></p>
+<p><span style="font-size: 16px; font-family: Fixedsys;">Переход, если &quot;не меньше&quot; (</span><span style="font-size: 16px; font-family: Fixedsys; color: #ff0000;">not &lt;</span><span style="font-size: 16px; font-family: Fixedsys;">).</span></p>
+</td>
+<td style="vertical-align:middle; padding:7px; border:solid thin #a0a0a0;"><p style="text-align: center;"><span style="font-size: 16px; font-family: Fixedsys;">SF = OF</span></p>
+</td>
+<td style="vertical-align:middle; padding:7px; border:solid thin #a0a0a0;"><p><span style="font-size: 16px; font-family: Fixedsys;">JNGE, JL</span></p>
+</td>
+</tr>
+<tr>
+<td style="vertical-align:middle; padding:7px; border:solid thin #a0a0a0;"><p><span style="font-size: 16px; font-family: Fixedsys;">JLE , JNG</span></p>
+</td>
+<td style="vertical-align:middle; padding:7px; border:solid thin #a0a0a0;"><p><span style="font-size: 16px; font-family: Fixedsys;">Переход, если &quot;меньше или равно&quot; (</span><span style="font-size: 16px; font-family: Fixedsys; color: #ff0000;">&lt;=</span><span style="font-size: 16px; font-family: Fixedsys;">).</span></p>
+<p><span style="font-size: 16px; font-family: Fixedsys;">Переход, если &quot;не больше&quot; (</span><span style="font-size: 16px; font-family: Fixedsys; color: #ff0000;">not &gt;</span><span style="font-size: 16px; font-family: Fixedsys;">).</span></p>
+</td>
+<td style="vertical-align:middle; padding:7px; border:solid thin #a0a0a0;"><p style="text-align: center;"><span style="font-size: 16px; font-family: Fixedsys;">ZF = 1</span></p>
+<p style="text-align: center;"><span style="font-size: 16px; font-family: Fixedsys;">or</span></p>
+<p style="text-align: center;"><span style="font-size: 16px; font-family: Fixedsys;">SF &lt;&gt; OF</span></p>
+</td>
+<td style="vertical-align:middle; padding:7px; border:solid thin #a0a0a0;"><p><span style="font-size: 16px; font-family: Fixedsys;">JNLE, JG</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="p_Normal" style="margin: 0 0 0 40px;">&nbsp;</p>
+<p class="p_Normal" style="margin: 0 0 0 40px;">&nbsp;</p>
+<p class="p_Normal" style="margin: 0 0 0 40px;"><span style="font-size: 16px; font-family: Fixedsys;">&lt;&gt;</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> - этот знак означает &quot;не равно&quot;.</span></p>
+<p class="p_Normal" style="margin: 0 0 0 40px;">&nbsp;</p>
+<p class="p_Normal" style="margin: 0 0 0 40px;">&nbsp;</p>
+<p class="p_Normal" style="margin: 0 0 0 40px;"><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">Команды перехода для чисел без знаков</span></p>
+<p class="p_Normal" style="margin: 0 0 0 40px;">&nbsp;</p>
+<div style="text-align: left; text-indent: 0; padding: 0 0 0 0; margin: 0 0 0 0;"><table style="border:solid thin #a0a0a0; border-spacing:2px;">
+<tr>
+<td style="vertical-align:middle; background-color:#FFFF00; padding:7px; border:solid thin #a0a0a0;"><p><span style="font-size: 16px; font-family: Fixedsys;">Команда</span></p>
+</td>
+<td style="vertical-align:middle; background-color:#FFFF00; padding:7px; border:solid thin #a0a0a0;"><p><span style="font-size: 16px; font-family: Fixedsys;">Описание</span></p>
+</td>
+<td style="vertical-align:middle; background-color:#FFFF00; padding:7px; border:solid thin #a0a0a0;"><p><span style="font-size: 16px; font-family: Fixedsys;">Условие</span></p>
+</td>
+<td style="vertical-align:middle; background-color:#FFFF00; padding:7px; border:solid thin #a0a0a0;"><p><span style="font-size: 16px; font-family: Fixedsys;">Обратная команда</span></p>
+</td>
+</tr>
+<tr>
+<td style="vertical-align:middle; padding:7px; border:solid thin #a0a0a0;"><p><span style="font-size: 16px; font-family: Fixedsys;">JE , JZ</span></p>
+</td>
+<td style="vertical-align:middle; padding:7px; border:solid thin #a0a0a0;"><p><span style="font-size: 16px; font-family: Fixedsys;">Переход, если &quot;равно&quot; (</span><span style="font-size: 16px; font-family: Fixedsys; color: #ff0000;">=</span><span style="font-size: 16px; font-family: Fixedsys;">).</span></p>
+<p><span style="font-size: 16px; font-family: Fixedsys;">Переход, если &quot;ноль&quot;.</span></p>
+</td>
+<td style="vertical-align:middle; padding:7px; border:solid thin #a0a0a0;"><p style="text-align: center;"><span style="font-size: 16px; font-family: Fixedsys;">ZF = 1</span></p>
+</td>
+<td style="vertical-align:middle; padding:7px; border:solid thin #a0a0a0;"><p><span style="font-size: 16px; font-family: Fixedsys;">JNE, JNZ</span></p>
+</td>
+</tr>
+<tr>
+<td style="vertical-align:middle; padding:7px; border:solid thin #a0a0a0;"><p><span style="font-size: 16px; font-family: Fixedsys;">JNE , JNZ</span></p>
+</td>
+<td style="vertical-align:middle; padding:7px; border:solid thin #a0a0a0;"><p><span style="font-size: 16px; font-family: Fixedsys;">Переход, если &quot;не равно&quot; (</span><span style="font-size: 16px; font-family: Fixedsys; color: #ff0000;">&lt;&gt;</span><span style="font-size: 16px; font-family: Fixedsys;">).</span></p>
+<p><span style="font-size: 16px; font-family: Fixedsys;">Переход, если &quot;не ноль&quot;.</span></p>
+</td>
+<td style="vertical-align:middle; padding:7px; border:solid thin #a0a0a0;"><p style="text-align: center;"><span style="font-size: 16px; font-family: Fixedsys;">ZF = 0</span></p>
+</td>
+<td style="vertical-align:middle; padding:7px; border:solid thin #a0a0a0;"><p><span style="font-size: 16px; font-family: Fixedsys;">JE, JZ</span></p>
+</td>
+</tr>
+<tr>
+<td style="vertical-align:middle; padding:7px; border:solid thin #a0a0a0;"><p><span style="font-size: 16px; font-family: Fixedsys;">JA , JNBE</span></p>
+</td>
+<td style="vertical-align:middle; padding:7px; border:solid thin #a0a0a0;"><p><span style="font-size: 16px; font-family: Fixedsys;">Переход, если &quot;выше&quot; (</span><span style="font-size: 16px; font-family: Fixedsys; color: #ff0000;">&gt;</span><span style="font-size: 16px; font-family: Fixedsys;">).</span></p>
+<p><span style="font-size: 16px; font-family: Fixedsys;">Переход, если &quot;не ниже или равно&quot; (</span><span style="font-size: 16px; font-family: Fixedsys; color: #ff0000;">not &lt;=</span><span style="font-size: 16px; font-family: Fixedsys;">).</span></p>
+</td>
+<td style="vertical-align:middle; padding:7px; border:solid thin #a0a0a0;"><p style="text-align: center;"><span style="font-size: 16px; font-family: Fixedsys;">CF = 0</span></p>
+<p style="text-align: center;"><span style="font-size: 16px; font-family: Fixedsys;">and</span></p>
+<p style="text-align: center;"><span style="font-size: 16px; font-family: Fixedsys;">ZF = 0</span></p>
+</td>
+<td style="vertical-align:middle; padding:7px; border:solid thin #a0a0a0;"><p><span style="font-size: 16px; font-family: Fixedsys;">JNA, JBE</span></p>
+</td>
+</tr>
+<tr>
+<td style="vertical-align:middle; padding:7px; border:solid thin #a0a0a0;"><p><span style="font-size: 16px; font-family: Fixedsys;">JB , JNAE, JC</span></p>
+</td>
+<td style="vertical-align:middle; padding:7px; border:solid thin #a0a0a0;"><p><span style="font-size: 16px; font-family: Fixedsys;">Переход, если &quot;ниже&quot; (</span><span style="font-size: 16px; font-family: Fixedsys; color: #ff0000;">&lt;</span><span style="font-size: 16px; font-family: Fixedsys;">).</span></p>
+<p><span style="font-size: 16px; font-family: Fixedsys;">Переход, если &quot;не выше или равно&quot; (</span><span style="font-size: 16px; font-family: Fixedsys; color: #ff0000;">not &gt;=</span><span style="font-size: 16px; font-family: Fixedsys;">).</span></p>
+<p><span style="font-size: 16px; font-family: Fixedsys;">Переход по переносу.</span></p>
+</td>
+<td style="vertical-align:middle; padding:7px; border:solid thin #a0a0a0;"><p style="text-align: center;"><span style="font-size: 16px; font-family: Fixedsys;">CF = 1</span></p>
+</td>
+<td style="vertical-align:middle; padding:7px; border:solid thin #a0a0a0;"><p><span style="font-size: 16px; font-family: Fixedsys;">JNB, JAE, JNC</span></p>
+</td>
+</tr>
+<tr>
+<td style="vertical-align:middle; padding:7px; border:solid thin #a0a0a0;"><p><span style="font-size: 16px; font-family: Fixedsys;">JAE , JNB, JNC</span></p>
+</td>
+<td style="vertical-align:middle; padding:7px; border:solid thin #a0a0a0;"><p><span style="font-size: 16px; font-family: Fixedsys;">Переход, если &quot;выше или равно&quot; (</span><span style="font-size: 16px; font-family: Fixedsys; color: #ff0000;">&gt;=</span><span style="font-size: 16px; font-family: Fixedsys;">).</span></p>
+<p><span style="font-size: 16px; font-family: Fixedsys;">Переход, если &quot;не ниже&quot; (</span><span style="font-size: 16px; font-family: Fixedsys; color: #ff0000;">not &lt;</span><span style="font-size: 16px; font-family: Fixedsys;">).</span></p>
+<p><span style="font-size: 16px; font-family: Fixedsys;">Переход, если &quot;нет переноса&quot;.</span></p>
+</td>
+<td style="vertical-align:middle; padding:7px; border:solid thin #a0a0a0;"><p style="text-align: center;"><span style="font-size: 16px; font-family: Fixedsys;">CF = 0</span></p>
+</td>
+<td style="vertical-align:middle; padding:7px; border:solid thin #a0a0a0;"><p><span style="font-size: 16px; font-family: Fixedsys;">JNAE, JB</span></p>
+</td>
+</tr>
+<tr>
+<td style="vertical-align:middle; padding:7px; border:solid thin #a0a0a0;"><p><span style="font-size: 16px; font-family: Fixedsys;">JBE , JNA</span></p>
+</td>
+<td style="vertical-align:middle; padding:7px; border:solid thin #a0a0a0;"><p><span style="font-size: 16px; font-family: Fixedsys;">Переход, если &quot;ниже или равно&quot; (</span><span style="font-size: 16px; font-family: Fixedsys; color: #ff0000;">&lt;=</span><span style="font-size: 16px; font-family: Fixedsys;">).</span></p>
+<p><span style="font-size: 16px; font-family: Fixedsys;">Переход, если &quot;не выше&quot; (</span><span style="font-size: 16px; font-family: Fixedsys; color: #ff0000;">not &gt;</span><span style="font-size: 16px; font-family: Fixedsys;">).</span></p>
+</td>
+<td style="vertical-align:middle; padding:7px; border:solid thin #a0a0a0;"><p style="text-align: center;"><span style="font-size: 16px; font-family: Fixedsys;">CF = 1</span></p>
+<p style="text-align: center;"><span style="font-size: 16px; font-family: Fixedsys;">or</span></p>
+<p style="text-align: center;"><span style="font-size: 16px; font-family: Fixedsys;">ZF = 1</span></p>
+</td>
+<td style="vertical-align:middle; padding:7px; border:solid thin #a0a0a0;"><p><span style="font-size: 16px; font-family: Fixedsys;">JNBE, JA</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="p_Normal" style="margin: 0 0 0 40px;">&nbsp;</p>
+<p class="p_Normal" style="margin: 0 0 0 40px;">&nbsp;</p>
+<p class="p_Normal" style="margin: 0 0 0 40px;"><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Обычно, если требуется сравнить два числовых значения, то используют команду </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">CMP</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> (она делает то же самое, что и команда </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">SUB</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> (вычитание), но не сохраняет результат, а влияет только на флаги.</span></p>
+<p class="p_Normal" style="margin: 0 0 0 40px;">&nbsp;</p>
+<p class="p_Normal" style="margin: 0 0 0 40px;"><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Логика очень простая, например:</span></p>
+<p class="p_Normal" style="margin: 0 0 0 40px;">&nbsp;</p>
+<p class="p_Normal" style="margin: 0 0 0 40px;"><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">требуется сравнить числа </span><span style="font-size: 16px; font-family: Fixedsys;">5</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> и </span><span style="font-size: 16px; font-family: Fixedsys;">2</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">,</span></p>
+<p class="p_Normal" style="margin: 0 0 0 40px;">&nbsp;</p>
+<p class="p_Normal" style="margin: 0 0 0 40px;"><span style="font-size: 16px; font-family: Fixedsys;">5 - 2 = 3</span></p>
+<p class="p_Normal" style="margin: 0 0 0 40px;">&nbsp;</p>
+<p class="p_Normal" style="margin: 0 0 0 40px;"><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">результат - НЕ НОЛЬ (Флаг Нуля - Zero Flag (ZF) установлен в </span><span style="font-size: 16px; font-family: Fixedsys;">0</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">).</span></p>
+<p class="p_Normal" style="margin: 0 0 0 40px;">&nbsp;</p>
+<p class="p_Normal" style="margin: 0 0 0 40px;"><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Другой пример:</span></p>
+<p class="p_Normal" style="margin: 0 0 0 40px;">&nbsp;</p>
+<p class="p_Normal" style="margin: 0 0 0 40px;"><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">требуется сравнить </span><span style="font-size: 16px; font-family: Fixedsys;">7</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> и </span><span style="font-size: 16px; font-family: Fixedsys;">7</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">,</span></p>
+<p class="p_Normal" style="margin: 0 0 0 40px;">&nbsp;</p>
+<p class="p_Normal" style="margin: 0 0 0 40px;"><span style="font-size: 16px; font-family: Fixedsys;">7 - 7 = 0</span></p>
+<p class="p_Normal" style="margin: 0 0 0 40px;">&nbsp;</p>
+<p class="p_Normal" style="margin: 0 0 0 40px;"><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">результат - НОЛЬ! (Флаг Нуля - Zero Flag (ZF) установлен в </span><span style="font-size: 16px; font-family: Fixedsys;">1</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> и команды </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">JZ</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> или </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">JE</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> выполнят переход).</span></p>
+<p class="p_Normal" style="margin: 0 0 0 40px;">&nbsp;</p>
+<p class="p_Normal" style="margin: 0 0 0 40px;"><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Ниже приведен пример команды </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">CMP</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> и условного перехода:</span></p>
+<p class="p_Normal" style="margin: 0 0 0 40px;">&nbsp;</p>
+<div style="text-align: left; text-indent: 0; padding: 0 0 0 0; margin: 0 0 0 0;"><table style="width:50%; border:solid thin #a0a0a0; border-spacing:2px;">
+<tr>
+<td style="vertical-align:middle; padding:10px; border:solid thin #a0a0a0;"><p class="p_CodeExample" style="page-break-inside: avoid;"><span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">include&nbsp;emu8086.inc</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">ORG&nbsp;&nbsp;&nbsp;&nbsp;100h</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">MOV&nbsp;&nbsp;&nbsp;&nbsp;AL,&nbsp;25&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;записать&nbsp;в&nbsp;AL&nbsp;число&nbsp;25.</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">MOV&nbsp;&nbsp;&nbsp;&nbsp;BL,&nbsp;10&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;записать&nbsp;в&nbsp;BL&nbsp;число&nbsp;10.</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">CMP&nbsp;&nbsp;&nbsp;&nbsp;AL,&nbsp;BL&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;сравнить&nbsp;AL&nbsp;с&nbsp;BL.</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">JE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;equal&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;если&nbsp;AL&nbsp;=&nbsp;BL&nbsp;(ZF&nbsp;=&nbsp;1),&nbsp;то&nbsp;перейти&nbsp;к&nbsp;метке&nbsp;equal.</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">PUTC&nbsp;&nbsp;&nbsp;'N'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;иначе,&nbsp;если&nbsp;AL&nbsp;&lt;&gt;&nbsp;BL,&nbsp;то&nbsp;продолжить&nbsp;выполнение</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">JMP&nbsp;&nbsp;&nbsp;&nbsp;stop&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;программы&nbsp;-&nbsp;напечатать&nbsp;'N'&nbsp;и&nbsp;перейти&nbsp;к&nbsp;метке&nbsp;stop.</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">equal:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;если&nbsp;программа&nbsp;на&nbsp;этой&nbsp;метке,</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">PUTC&nbsp;&nbsp;&nbsp;'Y'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;то&nbsp;AL&nbsp;=&nbsp;BL,&nbsp;поэтому&nbsp;выводим&nbsp;на&nbsp;экран&nbsp;'Y'.</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">stop:</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">RET&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;сюда&nbsp;приходим&nbsp;в&nbsp;любом&nbsp;случае</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">END</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="p_Normal" style="margin: 0 0 0 40px;">&nbsp;</p>
+<p class="p_Normal" style="margin: 0 0 0 40px;">&nbsp;</p>
+<p class="p_Normal" style="margin: 0 0 0 40px;"><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Попробуйте вышеописанный пример с различными числами в </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">AL</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> и </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">BL</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">, откройте флаги, щелкнув по кнопке [</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">FLAGS</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">]. Используйте [</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">Single Step - пошаговый режим</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">] и наблюдайте за происходящим. Не забывайте перекомпилировать и перезагружать вашу программу после кажого сделанного вами в ней изменения (используйте клавишу </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">F5</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">).</span></p>
+<p class="p_Normal" style="margin: 0 0 0 40px;">&nbsp;</p>
+<hr style="height:2px; color:#000000; border-width:0; background-color:#000000;" /><p class="p_Normal">&nbsp;</p>
+<p class="p_Normal"><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Все условные переходы имеют одно серьезное ограничение - в отличие от команды </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">JMP</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">, они могут выполнять переход только на </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">127</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> байтов вперед или на </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">128</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> байтов назад (учтите, что большие команды ассемблируются в 3 и более байтов).</span></p>
+<p class="p_Normal">&nbsp;</p>
+<p class="p_Normal"><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Мы можем легко преодолеть это ограничение, используя следующий метод:</span></p>
+<p class="p_Normal">&nbsp;</p>
+<p class="p_Normal" style="text-indent: 0; padding-left: 40px; margin: 0 0 0 20px;"><span class="f_Normal" style="font-size:16px; font-family: 'Courier New';display:inline-block;width:20px;margin-left:-20px">o</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Взять обратную команду из приведенной выше таблицы и выполнить переход к метке </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-style: italic;">label_x</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">.</span></p>
+<p class="p_Normal" style="margin: 0 0 0 60px;">&nbsp;</p>
+<p class="p_Normal" style="text-indent: 0; padding-left: 40px; margin: 0 0 0 20px;"><span class="f_Normal" style="font-size:16px; font-family: 'Courier New';display:inline-block;width:20px;margin-left:-20px">o</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Использовать команду </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">JMP</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> для перехода к нужному участку программы.</span></p>
+<p class="p_Normal" style="margin: 0 0 0 60px;">&nbsp;</p>
+<p class="p_Normal" style="text-indent: 0; padding-left: 40px; margin: 0 0 0 20px;"><span class="f_Normal" style="font-size:16px; font-family: 'Courier New';display:inline-block;width:20px;margin-left:-20px">o</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Определить метку </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-style: italic;">label_x:</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> только после команды </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">JMP</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">.</span></p>
+<p class="p_Normal" style="margin: 0 0 0 60px;">&nbsp;</p>
+<p class="p_Normal"><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-style: italic;">label_x:</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> - может быть любым именем.</span></p>
+<p class="p_Normal">&nbsp;</p>
+<p class="p_Normal"><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Пример:</span></p>
+<p class="p_Normal">&nbsp;</p>
+<div style="text-align: left; text-indent: 0; padding: 0 0 0 0; margin: 0 0 0 0;"><table style="width:50%; border:solid thin #a0a0a0; border-spacing:2px;">
+<tr>
+<td style="vertical-align:middle; padding:10px; border:solid thin #a0a0a0;"><p class="p_CodeExample" style="page-break-inside: avoid;"><span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">include&nbsp;emu8086.inc</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">ORG&nbsp;&nbsp;&nbsp;&nbsp;100h</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">MOV&nbsp;&nbsp;&nbsp;&nbsp;AL,&nbsp;25&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;записать&nbsp;в&nbsp;AL&nbsp;число&nbsp;25.</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">MOV&nbsp;&nbsp;&nbsp;&nbsp;BL,&nbsp;10&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;записать&nbsp;в&nbsp;BL&nbsp;число&nbsp;10.</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">CMP&nbsp;&nbsp;&nbsp;&nbsp;AL,&nbsp;BL&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;сравнить&nbsp;AL&nbsp;с&nbsp;BL.</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys; color: #008000;">JNE&nbsp;&nbsp;&nbsp;&nbsp;not_equal&nbsp;&nbsp;;&nbsp;переход,&nbsp;если&nbsp;AL&nbsp;&lt;&gt;&nbsp;BL&nbsp;(ZF&nbsp;=&nbsp;0).</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys; color: #008000;">JMP&nbsp;&nbsp;&nbsp;&nbsp;equal</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys; color: #008000;">not_equal:</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">;&nbsp;представим,&nbsp;что&nbsp;здесь&nbsp;у&nbsp;нас</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">;&nbsp;размещается&nbsp;код,&nbsp;который&nbsp;ассмеблируется</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">;&nbsp;более&nbsp;чем&nbsp;в&nbsp;127&nbsp;байтов...</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">PUTC&nbsp;&nbsp;&nbsp;'N'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;если&nbsp;мы&nbsp;оказались&nbsp;здесь,&nbsp;то&nbsp;AL&nbsp;&lt;&gt;&nbsp;BL,</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">JMP&nbsp;&nbsp;&nbsp;&nbsp;stop&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;тогда&nbsp;печатаем&nbsp;'N',&nbsp;и&nbsp;переходим&nbsp;к&nbsp;метке&nbsp;stop.</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">equal:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;если&nbsp;мы&nbsp;оказались&nbsp;здесь,</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">PUTC&nbsp;&nbsp;&nbsp;'Y'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;то&nbsp;AL&nbsp;=&nbsp;BL,&nbsp;тогда&nbsp;печатаем&nbsp;'Y'.</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">stop:</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">RET&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;сюда&nbsp;приходим&nbsp;в&nbsp;любом&nbsp;случае.</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">END</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<hr style="height:2px; color:#000000; border-width:0; background-color:#000000;" /><p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Другой, реже используемый метод, представляет собой применение непосредственного значения (адреса) вместо метки. Если непосредственное значение начинается с символа '$', то выполняется относительный переход - переход относительно текущего адреса. Компилятор вычисляет команду, которая находится по заданному смещению, и выполняет переход непосредственно к ней. Например:</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<div style="text-align: left; text-indent: 0; padding: 0 0 0 0; margin: 0 0 0 0;"><table style="width:50%; border:solid thin #a0a0a0; border-spacing:2px;">
+<tr>
+<td style="vertical-align:middle; padding:10px; border:solid thin #a0a0a0;"><p class="p_CodeExample" style="page-break-inside: avoid;"><span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">ORG&nbsp;&nbsp;&nbsp;&nbsp;100h</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">;&nbsp;безусловный&nbsp;переход&nbsp;вперед:</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">;&nbsp;пропускаем&nbsp;следующие&nbsp;два&nbsp;байта,</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">JMP&nbsp;$2</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">a&nbsp;DB&nbsp;3&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;1&nbsp;байт.</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">b&nbsp;DB&nbsp;4&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;1&nbsp;байт.</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">;&nbsp;переход&nbsp;назад&nbsp;на&nbsp;7&nbsp;байтов,&nbsp;если&nbsp;BL&nbsp;&lt;&gt;&nbsp;0:</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">;&nbsp;(Команда&nbsp;JMP&nbsp;занимает&nbsp;2&nbsp;байта)</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">MOV&nbsp;BL,9</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">DEC&nbsp;BL&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;2&nbsp;байта.</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">CMP&nbsp;BL,&nbsp;0&nbsp;&nbsp;&nbsp;;&nbsp;3&nbsp;байта.</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">JNE&nbsp;$-7</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">RET</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">END</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<hr style="height:2px; color:#000000; border-width:0; background-color:#000000;" /><p style="text-align: center;"><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;"><a href="asm_tutorial_06.html" class="topiclink">&lt;&lt;&lt; Предыдущая часть &lt;&lt;&lt; </a></span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> &nbsp; &nbsp; </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;"><a href="asm_tutorial_08.html" class="topiclink">&gt;&gt;&gt; Следующая часть &gt;&gt;&gt;</a></span></p>
+<hr style="height:2px; color:#000000; border-width:0; background-color:#000000;" /><p><span style="color: #000000;">&nbsp;</span></p>
+</td>
+</tr>
+</table>
+</div>
+
+</td></tr></table>
+
+</body>
+</html>

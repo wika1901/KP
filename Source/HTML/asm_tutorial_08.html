@@ -1,0 +1,170 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+   <title>Перевод: Поляков А.В. http://www.avprog.narod.ru</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="" />
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+   <style type="text/css">
+     body { margin: 0px; background: #FFFFFF; }
+   </style>
+   <script type="text/javascript" src="jquery.js"></script>
+   <script type="text/javascript" src="helpman_settings.js"></script>
+   <script type="text/javascript" src="helpman_topicinit.js"></script>
+
+   <script type="text/javascript">
+     HMSyncTOC("index.html", "asm_tutorial_08.html");
+   </script>
+   <script type="text/javascript" src="highlight.js"></script>
+   <script type="text/javascript">
+     $(document).ready(function(){highlight();});
+   </script>
+</head>
+<body>
+
+
+<table style="width:100%; border:none; border-spacing:0px; padding:5px; background:#C0C0C0">
+  <tr style="vertical-align:middle">
+    <td style="text-align:left">
+      <h1 class="p_Heading1"><span class="f_Heading1">Перевод: Поляков А.В. http://www.avprog.narod.ru</span></h1>
+
+    </td>
+    <td style="text-align:right">
+     <a href="index.html">Top</a>&nbsp;
+     
+     
+    </td>
+  </tr>
+</table>
+
+
+<!-- Placeholder for topic body. -->
+<table style="width:100%;border:none;border-spacing:0px"><tr style="vertical-align:top"><td style="text-align:left;padding:5px">
+<p class="p_Normal">TEXT SCRAMBLING in TRIAL VERSION OUTPUT! In evaluation mode, Help+Manual will scramble individual characters in random words in your published output files. This is a limitation of the free trial version. <a href="https://www.helpandmanual.com" target="_blank" class="weblink"> This help system was created with an evaluation copy of Help+Manual.</a></p>
+<hr style="height:2px; color:#FF0000; border-width:0; background-color:#ff0000;" /><p class="p_Normal">&nbsp;</p>
+<div style="text-align: left; text-indent: 0; padding: 0 0 0 0; margin: 0 0 0 0;"><table style="width:80%; border:none; border-spacing:2px;">
+<tr>
+<td style="vertical-align:middle; padding:1px; border:none"><p><span style="font-size: 19px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">Уроки Ассемблера 8086 для начинающих (Часть 8)</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="font-size: 24px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">Процедуры</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="font-size: 11px; font-family: Verdana,Geneva,Arial,sans-serif;">Перевод: Поляков А.В. <a href="javascript:if(confirm('http://www.avprog.narod.ru/%20%20\n\nThis%20file%20was%20not%20retrieved%20by%20Teleport%20Ultra,%20because%20it%20is%20addressed%20on%20a%20domain%20or%20path%20outside%20the%20boundaries%20set%20for%20its%20Starting%20Address.%20%20\n\nDo%20you%20want%20to%20open%20it%20from%20the%20server?'))window.location='http://www.avprog.narod.ru/'" class="weblink">http://www.avprog.narod.ru</a></span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Процедура - это часть кода, которая может быть вызвана из вашей программы для выполнения какой-либо определенной задачи. Процедуры делают программу более структурной и доступной для понимания. В общем случае процедура возвращает программу к той же самой точке, откуда она была вызвана.</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Синтаксис для объявления процедуры:</span></p>
+<p class="p_Normal" style="margin: 14px 0 0 40px;"><span style="font-size: 16px; font-family: Fixedsys; text-decoration: underline;">имя</span><span style="font-size: 16px; font-family: Fixedsys;"> PROC</span></p>
+<p class="p_Normal" style="margin: 0 0 0 40px;">&nbsp;</p>
+<p class="p_Normal" style="margin: 0 0 0 40px;"><span style="font-size: 16px; font-family: Fixedsys;"> &nbsp; &nbsp; &nbsp;; здесь находится</span></p>
+<p class="p_Normal" style="margin: 0 0 0 40px;"><span style="font-size: 16px; font-family: Fixedsys;"> &nbsp; &nbsp; &nbsp;; код процедуры ...</span></p>
+<p class="p_Normal" style="margin: 0 0 0 40px;">&nbsp;</p>
+<p class="p_Normal" style="margin: 0 0 0 40px;"><span style="font-size: 16px; font-family: Fixedsys;">RET</span></p>
+<p class="p_Normal" style="margin: 0 0 14px 40px;"><span style="font-size: 16px; font-family: Fixedsys; text-decoration: underline;">имя</span><span style="font-size: 16px; font-family: Fixedsys;"> ENDP</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; text-decoration: underline;">имя</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> - это имя процедуры. Одно и то же имя должно быть в верхней и нижней части, это используется для проверки правильности закрытия процедур.</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Возможно, вы уже знаете, что команда </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">RET</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> используется для возвращения в операционную систему. Эта же команда используется для возвращения из процедуры (фактически операционная система воспринимает вашу программу, как специальную процедуру).</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">PROC</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> и </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">ENDP</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> - это директивы компилятора, поэтому они не ассемблируются в какой-либо реальный машинный код. Компилятор только запоминает адрес процедуры.</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Команда </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">CALL</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> используется для вызова процедуры.</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Пример:</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<div style="text-align: left; text-indent: 0; padding: 0 0 0 0; margin: 0 0 0 0;"><table style="width:50%; border:solid thin #a0a0a0; border-spacing:2px;">
+<tr>
+<td style="vertical-align:middle; padding:10px; border:solid thin #a0a0a0;"><p class="p_CodeExample" style="page-break-inside: avoid;"><span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">ORG&nbsp;&nbsp;&nbsp;&nbsp;100h</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">CALL&nbsp;&nbsp;&nbsp;m1</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">MOV&nbsp;&nbsp;&nbsp;&nbsp;AX,&nbsp;2</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">RET&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;вернуться&nbsp;в&nbsp;операционную&nbsp;систему.</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">m1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PROC</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">MOV&nbsp;&nbsp;&nbsp;&nbsp;BX,&nbsp;5</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">RET&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;вернуться&nbsp;в&nbsp;программу,&nbsp;из&nbsp;которой&nbsp;была&nbsp;вызвана.</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">m1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ENDP</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">END</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Вышеописанный пример вызывает процедуру </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">m1</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">, которая выполняет команду </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">MOV BX, 5</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">. После окончания процедуры, программа выполняет команду, следующую после команды </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">CALL</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">, т.е. команду: </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">MOV AX, 2</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">.</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Есть несколько способов передачи параметров процедуре. Самый простой из них - использование регистров. Здесь представлен пример процедуры, которая принимает два параметра в регистрах </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">AL</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> и </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">BL</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">, умножает их и возвращает результат в регистр </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">AX</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">:</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<div style="text-align: left; text-indent: 0; padding: 0 0 0 0; margin: 0 0 0 0;"><table style="width:50%; border:solid thin #a0a0a0; border-spacing:2px;">
+<tr>
+<td style="vertical-align:middle; padding:10px; border:solid thin #a0a0a0;"><p class="p_CodeExample" style="page-break-inside: avoid;"><span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">ORG&nbsp;&nbsp;&nbsp;&nbsp;100h</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">MOV&nbsp;&nbsp;&nbsp;&nbsp;AL,&nbsp;1</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">MOV&nbsp;&nbsp;&nbsp;&nbsp;BL,&nbsp;2</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">CALL&nbsp;&nbsp;&nbsp;m2</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">CALL&nbsp;&nbsp;&nbsp;m2</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">CALL&nbsp;&nbsp;&nbsp;m2</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">CALL&nbsp;&nbsp;&nbsp;m2</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">RET&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;вернуться&nbsp;в&nbsp;операционную&nbsp;систему.</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">m2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PROC</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">MUL&nbsp;&nbsp;&nbsp;&nbsp;BL&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;AX&nbsp;=&nbsp;AL&nbsp;*&nbsp;BL.</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">RET&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;вернуться&nbsp;в&nbsp;вызвавшую&nbsp;программу.</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">m2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ENDP</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">END</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">В этом примере значение регистра </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">AL</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> изменяется каждый раз при вызове процедуры, а состояние регистра </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">BL</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> не изменяется. Таким образом мы получили алгоритм вычисления числа </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">2</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> в </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">4</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">-ой степени.</span></p>
+<p><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">В результате в регистре </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">AX</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> будет число </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">16</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> (или 10h).</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<hr style="height:2px; color:#000000; border-width:0; background-color:#000000;" /><p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Здесь дан другой пример, в котором используется процедура для вывода на экран сообщения </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-style: italic;">Hello World!</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">:</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<div style="text-align: left; text-indent: 0; padding: 0 0 0 0; margin: 0 0 0 0;"><table style="width:50%; border:solid thin #a0a0a0; border-spacing:2px;">
+<tr>
+<td style="vertical-align:middle; padding:10px; border:solid thin #a0a0a0;"><p class="p_CodeExample" style="page-break-inside: avoid;"><span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">ORG&nbsp;&nbsp;&nbsp;&nbsp;100h</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">LEA&nbsp;&nbsp;&nbsp;&nbsp;SI,&nbsp;msg&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;загрузить&nbsp;адрес&nbsp;msg&nbsp;в&nbsp;регистр&nbsp;SI.</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">CALL&nbsp;&nbsp;&nbsp;print_me</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">RET&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;вернуться&nbsp;в&nbsp;ОС.</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">;&nbsp;==========================================================</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">;&nbsp;эта&nbsp;процедура&nbsp;печатает&nbsp;строку,&nbsp;строка&nbsp;должна&nbsp;оканчиваться</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">;&nbsp;нулем&nbsp;(иметь&nbsp;ноль&nbsp;в&nbsp;конце),&nbsp;адрес&nbsp;строки&nbsp;дожен&nbsp;быть&nbsp;в</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">;&nbsp;регистреhe&nbsp;SI:</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">print_me&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PROC</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">next_char:</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">&nbsp;&nbsp;&nbsp;&nbsp;CMP&nbsp;&nbsp;b.[SI],&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;проверить&nbsp;регистр&nbsp;SI,&nbsp;если&nbsp;он</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">&nbsp;&nbsp;&nbsp;&nbsp;JE&nbsp;&nbsp;&nbsp;stop&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;равен&nbsp;0,&nbsp;перейти&nbsp;к&nbsp;метке&nbsp;stop</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">&nbsp;&nbsp;&nbsp;&nbsp;MOV&nbsp;&nbsp;AL,&nbsp;[SI]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;иначе&nbsp;получить&nbsp;ASCII-символ.</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">&nbsp;&nbsp;&nbsp;&nbsp;MOV&nbsp;&nbsp;AH,&nbsp;0Eh&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;номер&nbsp;функции&nbsp;для&nbsp;печати&nbsp;символа.</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">&nbsp;&nbsp;&nbsp;&nbsp;INT&nbsp;&nbsp;10h&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;используем&nbsp;прерывание&nbsp;для&nbsp;печати</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;символа&nbsp;из&nbsp;AL.</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">&nbsp;&nbsp;&nbsp;&nbsp;ADD&nbsp;&nbsp;SI,&nbsp;1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;увеличить&nbsp;индекс&nbsp;строкового&nbsp;массива</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">&nbsp;&nbsp;&nbsp;&nbsp;JMP&nbsp;&nbsp;next_char&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;вернуться&nbsp;и&nbsp;напечатать&nbsp;другой&nbsp;символ</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">stop:</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">RET&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;вернуться&nbsp;в&nbsp;программу.</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">print_me&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ENDP</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">;&nbsp;==========================================================</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">msg&nbsp;&nbsp;&nbsp;&nbsp;DB&nbsp;&nbsp;'Hello&nbsp;World!',&nbsp;0&nbsp;&nbsp;&nbsp;;&nbsp;строка&nbsp;с&nbsp;нулевым&nbsp;окончанием</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">END</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">&quot;</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">b.</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">&quot; - префикс перед [SI] означает, что нам необходимо сравнивать байты, а не слова. Если вы хотите сравнить слова, добавьте префикс &quot;</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">w.</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">&quot; вместо &quot;</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">b.</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">&quot;. Если один из сравниваемых операторов - регистр, то вставлять префиксы не требуется, так как компилятор знает размер каждого регистра.</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<hr style="height:2px; color:#000000; border-width:0; background-color:#000000;" /><p style="text-align: center;"><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;"><a href="asm_tutorial_07.html" class="topiclink">&lt;&lt;&lt; Предыдущая часть &lt;&lt;&lt; </a></span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> &nbsp; &nbsp; </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;"><a href="asm_tutorial_09.html" class="topiclink">&gt;&gt;&gt; Следующая часть &gt;&gt;&gt;</a></span></p>
+<hr style="height:2px; color:#000000; border-width:0; background-color:#000000;" /><p><span style="color: #000000;">&nbsp;</span></p>
+</td>
+</tr>
+</table>
+</div>
+
+</td></tr></table>
+
+</body>
+</html>

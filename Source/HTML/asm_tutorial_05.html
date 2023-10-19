@@ -1,0 +1,163 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+   <title>Перевод: Поляков А.В. http://www.avprog.narod.ru</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="" />
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+   <style type="text/css">
+     body { margin: 0px; background: #FFFFFF; }
+   </style>
+   <script type="text/javascript" src="jquery.js"></script>
+   <script type="text/javascript" src="helpman_settings.js"></script>
+   <script type="text/javascript" src="helpman_topicinit.js"></script>
+
+   <script type="text/javascript">
+     HMSyncTOC("index.html", "asm_tutorial_05.html");
+   </script>
+   <script type="text/javascript" src="highlight.js"></script>
+   <script type="text/javascript">
+     $(document).ready(function(){highlight();});
+   </script>
+</head>
+<body>
+
+
+<table style="width:100%; border:none; border-spacing:0px; padding:5px; background:#C0C0C0">
+  <tr style="vertical-align:middle">
+    <td style="text-align:left">
+      <h1 class="p_Heading1"><span class="f_Heading1">Перевод: Поляков А.В. http://www.avprog.narod.ru</span></h1>
+
+    </td>
+    <td style="text-align:right">
+     <a href="index.html">Top</a>&nbsp;
+     
+     
+    </td>
+  </tr>
+</table>
+
+
+<!-- Placeholder for topic body. -->
+<table style="width:100%;border:none;border-spacing:0px"><tr style="vertical-align:top"><td style="text-align:left;padding:5px">
+<p class="p_Normal">TEXT SCRAMBLING in TRIAL VERSION OUTPUT! In evaluation mode, Help+Manual will scramble individual characters in random words in your published output files. This is a limitation of the free trial version. <a href="https://www.helpandmanual.com" target="_blank" class="weblink"> This help system was created with an evaluation copy of Help+Manual.</a></p>
+<hr style="height:2px; color:#FF0000; border-width:0; background-color:#ff0000;" /><p class="p_Normal">&nbsp;</p>
+<div style="text-align: left; text-indent: 0; padding: 0 0 0 0; margin: 0 0 0 0;"><table style="width:80%; border:none; border-spacing:2px;">
+<tr>
+<td style="vertical-align:middle; padding:1px; border:none"><p><span style="font-size: 19px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">Уроки Ассемблера 8086 для начинающих (Часть 5)</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="font-size: 24px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">Библиотека общих функций - emu8086.inc</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="font-size: 11px; font-family: Verdana,Geneva,Arial,sans-serif;">Перевод: Поляков А.В. <a href="javascript:if(confirm('http://www.avprog.narod.ru/%20%20\n\nThis%20file%20was%20not%20retrieved%20by%20Teleport%20Ultra,%20because%20it%20is%20addressed%20on%20a%20domain%20or%20path%20outside%20the%20boundaries%20set%20for%20its%20Starting%20Address.%20%20\n\nDo%20you%20want%20to%20open%20it%20from%20the%20server?'))window.location='http://www.avprog.narod.ru/'" class="weblink">http://www.avprog.narod.ru</a></span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Чтобы облегчить программирование, имеются несколько общих функций, которые можно включать в вашу программу. Чтобы использовать в вашей программе функции, определенные в другом файле, вы должны применить директиву </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">INCLUDE</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">, за которой следует имя файла. Компилятор автоматически найдет файл в той же папке, где размещен файл с исходным кодом программы, а если там этого файла не окажется, то поиск будет продолжен в папке </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">Inc</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">.</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Возможно, что на сегодняшний момент вы не сможете полностью понять содержимое </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">emu8086.inc</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> (расположенной в каталоге </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">Inc</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">), но это не страшно, т.к. вам достаточно понять, для чего все это нужно.</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Чтобы использовать какие-либо функции в </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">emu8086.inc</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">, вы должны вписать следующую строку в вашем исходном файле:</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="font-size: 16px; font-family: Fixedsys;">include 'emu8086.inc'</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<hr style="height:2px; color:#000000; border-width:0; background-color:#000000;" /><p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">emu8086.inc</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> определяет следующие </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">макросы</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">:</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p class="p_Normal" style="text-indent: 0; padding-left: 20px; margin: 0 0 0 20px;"><span class="f_Normal" style="font-size:16px; font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:20px;margin-left:-20px">&#8226;</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">PUTC char</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> - макрос с одним параметром, печатает ASCII-символ в текущей позиции курсора.</span></p>
+<p class="p_Normal" style="margin: 0 0 0 40px;">&nbsp;</p>
+<p class="p_Normal" style="text-indent: 0; padding-left: 20px; margin: 0 0 0 20px;"><span class="f_Normal" style="font-size:16px; font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:20px;margin-left:-20px">&#8226;</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">GOTOXY col, row</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> - макрос с двумя параметрами, устанавливает позицию курсора.</span></p>
+<p class="p_Normal" style="margin: 0 0 0 40px;">&nbsp;</p>
+<p class="p_Normal" style="text-indent: 0; padding-left: 20px; margin: 0 0 0 20px;"><span class="f_Normal" style="font-size:16px; font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:20px;margin-left:-20px">&#8226;</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">PRINT string</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> - макрос с одним параметром, печатает строку.</span></p>
+<p class="p_Normal" style="margin: 0 0 0 40px;">&nbsp;</p>
+<p class="p_Normal" style="text-indent: 0; padding-left: 20px; margin: 0 0 0 20px;"><span class="f_Normal" style="font-size:16px; font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:20px;margin-left:-20px">&#8226;</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">PRINTN string</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> - макрос с одним параметром, печатает строку. Это тоже самое, что и PRINT, но автоматически добавляется &quot;перевод каретки&quot; в конце строки (аналогично процедуре Writeln в Паскале).</span></p>
+<p class="p_Normal" style="margin: 0 0 0 40px;">&nbsp;</p>
+<p class="p_Normal" style="text-indent: 0; padding-left: 20px; margin: 0 0 0 20px;"><span class="f_Normal" style="font-size:16px; font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:20px;margin-left:-20px">&#8226;</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">CURSOROFF</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> - скрывает текстовый курсор.</span></p>
+<p class="p_Normal" style="margin: 0 0 0 40px;">&nbsp;</p>
+<p class="p_Normal" style="text-indent: 0; padding-left: 20px; margin: 0 0 0 20px;"><span class="f_Normal" style="font-size:16px; font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:20px;margin-left:-20px">&#8226;</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">CURSORON</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> - показывает текстовый курсор.</span></p>
+<p class="p_Normal" style="margin: 0 0 0 40px;">&nbsp;</p>
+<p><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Чтобы использовать какой-либо из вышеописанных макросов, просто напечатайте его имя в нужном месте вашего кода и, если необходимо, параметры. Например:</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<div style="text-align: left; text-indent: 0; padding: 0 0 0 0; margin: 0 0 0 0;"><table style="width:50%; border:solid thin #a0a0a0; border-spacing:2px;">
+<tr>
+<td style="vertical-align:middle; padding:10px; border:solid thin #a0a0a0;"><p class="p_CodeExample" style="page-break-inside: avoid;"><span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">include&nbsp;emu8086.inc</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">ORG&nbsp;&nbsp;&nbsp;&nbsp;100h</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">PRINT&nbsp;'Hello&nbsp;World!'</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">GOTOXY&nbsp;10,&nbsp;5</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">PUTC&nbsp;65&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;65&nbsp;-&nbsp;это&nbsp;ASCII-код&nbsp;для&nbsp;буквы&nbsp;'A'</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">PUTC&nbsp;'B'</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">RET&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;вернуться&nbsp;в&nbsp;операционную&nbsp;систему.</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">END&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;директива&nbsp;для&nbsp;окончания&nbsp;компиляции.</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Когда компилятор обрабатывает ваш исходный код, он ищет файл </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">emu8086.inc</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> для объявленных макросов и заменяет имя макроса реальным кодом. Вообще макросы - это относительно небольшие участки кода, частое использование макросов может сделать вашу программу (исполнимый файл) слишком большой (для оптимизации размера лучше использовать процедуры).</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<hr style="height:2px; color:#000000; border-width:0; background-color:#000000;" /><p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">emu8086.inc</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> также определяет следующие </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">процедуры</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">:</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p class="p_Normal" style="text-indent: 0; padding-left: 20px; margin: 0 0 0 20px;"><span class="f_Normal" style="font-size:16px; font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:20px;margin-left:-20px">&#8226;</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">PRINT_STRING</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> - процедура для печати строки с нулевым окончанием с текущей позиции курсора. Получает адрес строки в регистре </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">DS:SI</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">. Чтобы использовать эту процедуру, следует объявить: </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">DEFINE_PRINT_STRING</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> перед директивой </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">END</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">.</span></p>
+<p class="p_Normal" style="margin: 0 0 0 40px;">&nbsp;</p>
+<p class="p_Normal" style="text-indent: 0; padding-left: 20px; margin: 0 0 0 20px;"><span class="f_Normal" style="font-size:16px; font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:20px;margin-left:-20px">&#8226;</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">PTHIS</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> - процедура для печати строки с нулевым окончанием с текущей позиции курсора (как и PRINT_STRING), но получает адрес из стека. Строка с нулевым окончанием должна быть определена только после команды CALL. Например:</span></p>
+<p class="p_Normal" style="margin: 0 0 0 40px;">&nbsp;</p>
+<p class="p_Normal" style="margin: 0 0 0 40px;"><span style="font-size: 16px; font-family: Fixedsys;">CALL PTHIS</span></p>
+<p class="p_Normal" style="margin: 0 0 0 40px;"><span style="font-size: 16px; font-family: Fixedsys;">db 'Hello World!', 0</span></p>
+<p class="p_Normal" style="margin: 0 0 0 40px;">&nbsp;</p>
+<p class="p_Normal" style="margin: 0 0 0 40px;"><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Чтобы использовать эту процедуру, следует объявить: </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">DEFINE_PTHIS</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> перед директивой </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">END</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">.</span></p>
+<p class="p_Normal" style="margin: 0 0 0 40px;">&nbsp;</p>
+<p class="p_Normal" style="text-indent: 0; padding-left: 20px; margin: 0 0 0 20px;"><span class="f_Normal" style="font-size:16px; font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:20px;margin-left:-20px">&#8226;</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">GET_STRING</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> - процедура для получения строки с нулевым окончанием от пользователя. Принятая строка записана в буфер, адрес которого указан в </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">DS:DI</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">, размер буфера должен быть в </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">DX</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">. Процедура завершает ввод, если нажата клавиша 'Enter'. Чтобы использовать эту процедуру, следует объявить: </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">DEFINE_GET_STRING</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> перед директивой </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">END</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">.</span></p>
+<p class="p_Normal" style="margin: 0 0 0 40px;">&nbsp;</p>
+<p class="p_Normal" style="text-indent: 0; padding-left: 20px; margin: 0 0 0 20px;"><span class="f_Normal" style="font-size:16px; font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:20px;margin-left:-20px">&#8226;</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">CLEAR_SCREEN</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> - процедура для очистки экрана (выполняет полную прокрутку экрана и устанавливает курсор в его верхней части) Чтобы использовать эту процедуру, следует объявить: </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">DEFINE_CLEAR_SCREEN</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> перед директивой </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">END</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">.</span></p>
+<p class="p_Normal" style="margin: 0 0 0 40px;">&nbsp;</p>
+<p class="p_Normal" style="text-indent: 0; padding-left: 20px; margin: 0 0 0 20px;"><span class="f_Normal" style="font-size:16px; font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:20px;margin-left:-20px">&#8226;</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">SCAN_NUM</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> - процедура, которая получает многозначное число СО ЗНАКОМ с клавиатуры, и записывает результат в регистр </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">CX</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">. Чтобы использовать эту процедуру, следует объявить: </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">DEFINE_SCAN_NUM</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> перед директивой </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">END</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">.</span></p>
+<p class="p_Normal" style="margin: 0 0 0 40px;">&nbsp;</p>
+<p class="p_Normal" style="text-indent: 0; padding-left: 20px; margin: 0 0 0 20px;"><span class="f_Normal" style="font-size:16px; font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:20px;margin-left:-20px">&#8226;</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">PRINT_NUM</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> - процедура, которая печатает число со знаком, которое находится в регистре </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">AX</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">. Чтобы использовать эту процедуру, следует объявить: </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">DEFINE_PRINT_NUM</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> перед директивой </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">END</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">.</span></p>
+<p class="p_Normal" style="margin: 0 0 0 40px;">&nbsp;</p>
+<p class="p_Normal" style="text-indent: 0; padding-left: 20px; margin: 0 0 0 20px;"><span class="f_Normal" style="font-size:16px; font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:20px;margin-left:-20px">&#8226;</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">PRINT_NUM_UNS</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> - процедура, которая печатает число без знака из регистра </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">AX</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">. Чтобы использовать эту процедуру, следует объявить: </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">DEFINE_PRINT_NUM_UNS</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> перед директивой </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">END</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">.</span></p>
+<p class="p_Normal" style="margin: 0 0 0 40px;">&nbsp;</p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Чтобы использовать какую-либо из вышеописанных процедур, вы должны сначала объявить функцию в нижней части вашего файла (но перед </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">END</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">!!), а затем использовать команду </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">CALL</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">, за которой следует имя процедуры. Пример:</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<div style="text-align: left; text-indent: 0; padding: 0 0 0 0; margin: 0 0 0 0;"><table style="width:50%; border:solid thin #a0a0a0; border-spacing:2px;">
+<tr>
+<td style="vertical-align:middle; padding:10px; border:solid thin #a0a0a0;"><p class="p_CodeExample" style="page-break-inside: avoid;"><span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">include&nbsp;'emu8086.inc'</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">ORG&nbsp;&nbsp;&nbsp;&nbsp;100h</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">LEA&nbsp;&nbsp;&nbsp;&nbsp;SI,&nbsp;msg1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;попросить&nbsp;ввести&nbsp;число</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">CALL&nbsp;&nbsp;&nbsp;print_string&nbsp;&nbsp;&nbsp;;</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">CALL&nbsp;&nbsp;&nbsp;scan_num&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;получить&nbsp;число&nbsp;в&nbsp;CX.</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">MOV&nbsp;&nbsp;&nbsp;&nbsp;AX,&nbsp;CX&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;копировать&nbsp;число&nbsp;в&nbsp;AX.</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">;&nbsp;напечатать&nbsp;следующие&nbsp;строки:</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">CALL&nbsp;&nbsp;&nbsp;pthis</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">DB&nbsp;&nbsp;13,&nbsp;10,&nbsp;'You&nbsp;have&nbsp;entered:&nbsp;',&nbsp;0</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">CALL&nbsp;&nbsp;&nbsp;print_num&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;напечатать&nbsp;число&nbsp;из&nbsp;AX.</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">RET&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;вернуться&nbsp;в&nbsp;операционную&nbsp;систему.</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">msg1&nbsp;&nbsp;&nbsp;DB&nbsp;&nbsp;'Enter&nbsp;the&nbsp;number:&nbsp;',&nbsp;0</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">DEFINE_SCAN_NUM</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">DEFINE_PRINT_STRING</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">DEFINE_PRINT_NUM</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">DEFINE_PRINT_NUM_UNS&nbsp;&nbsp;;&nbsp;требуется&nbsp;для&nbsp;print_num.</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">DEFINE_PTHIS</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">END&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;директива&nbsp;окончания&nbsp;компиляции.</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Сначала компилятор обрабатывает объявления (это просто обычные макросы, которые рассматриваются до процедур). Когда компилятор получает команду </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">CALL</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">, он заменяет имя процедуры адресом кода, где объявлена процедура. Когда выполнится команда </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">CALL</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">, то управление будет передано процедуре. Это очень удобно: даже если вы вызовите в вашем коде одну и ту же процедуру 100 раз, то вы все-равно будете иметь относительно небольшой размер исполнимого файла. Кажется сложным, не так ли? Но это не страшно. Со временем вы все это изучите, а пока достаточно понимания только основных принципов.</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<hr style="height:2px; color:#000000; border-width:0; background-color:#000000;" /><p style="text-align: center;"><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;"><a href="asm_tutorial_04.html" class="topiclink">&lt;&lt;&lt; Предыдущая часть &lt;&lt;&lt; </a></span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> &nbsp; &nbsp; </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;"><a href="asm_tutorial_06.html" class="topiclink">&gt;&gt;&gt; Следующая часть &gt;&gt;&gt;</a></span></p>
+<hr style="height:2px; color:#000000; border-width:0; background-color:#000000;" /></td>
+</tr>
+</table>
+</div>
+<p class="p_Normal">&nbsp;</p>
+
+</td></tr></table>
+
+</body>
+</html>

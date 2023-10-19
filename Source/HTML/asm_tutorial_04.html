@@ -1,0 +1,112 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+   <title>Перевод: Поляков А.В. http://www.avprog.narod.ru</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="" />
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+   <style type="text/css">
+     body { margin: 0px; background: #FFFFFF; }
+   </style>
+   <script type="text/javascript" src="jquery.js"></script>
+   <script type="text/javascript" src="helpman_settings.js"></script>
+   <script type="text/javascript" src="helpman_topicinit.js"></script>
+
+   <script type="text/javascript">
+     HMSyncTOC("index.html", "asm_tutorial_04.html");
+   </script>
+   <script type="text/javascript" src="highlight.js"></script>
+   <script type="text/javascript">
+     $(document).ready(function(){highlight();});
+   </script>
+</head>
+<body>
+
+
+<table style="width:100%; border:none; border-spacing:0px; padding:5px; background:#C0C0C0">
+  <tr style="vertical-align:middle">
+    <td style="text-align:left">
+      <h1 class="p_Heading1"><span class="f_Heading1">Перевод: Поляков А.В. http://www.avprog.narod.ru</span></h1>
+
+    </td>
+    <td style="text-align:right">
+     <a href="index.html">Top</a>&nbsp;
+     
+     
+    </td>
+  </tr>
+</table>
+
+
+<!-- Placeholder for topic body. -->
+<table style="width:100%;border:none;border-spacing:0px"><tr style="vertical-align:top"><td style="text-align:left;padding:5px">
+<p class="p_Normal">TEXT SCRAMBLING in TRIAL VERSION OUTPUT! In evaluation mode, Help+Manual will scramble individual characters in random words in your published output files. This is a limitation of the free trial version. <a href="https://www.helpandmanual.com" target="_blank" class="weblink"> This help system was created with an evaluation copy of Help+Manual.</a></p>
+<hr style="height:2px; color:#FF0000; border-width:0; background-color:#ff0000;" /><p class="p_Normal">&nbsp;</p>
+<div style="text-align: left; text-indent: 0; padding: 0 0 0 0; margin: 0 0 0 0;"><table style="width:80%; border:none; border-spacing:2px;">
+<tr>
+<td style="vertical-align:middle; padding:1px; border:none"><p><span style="font-size: 19px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">Уроки Ассемблера 8086 для начинающих (Часть 4)</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="font-size: 24px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">Прерывания</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="font-size: 11px; font-family: Verdana,Geneva,Arial,sans-serif;">Перевод: Поляков А.В. <a href="javascript:if(confirm('http://www.avprog.narod.ru/%20%20\n\nThis%20file%20was%20not%20retrieved%20by%20Teleport%20Ultra,%20because%20it%20is%20addressed%20on%20a%20domain%20or%20path%20outside%20the%20boundaries%20set%20for%20its%20Starting%20Address.%20%20\n\nDo%20you%20want%20to%20open%20it%20from%20the%20server?'))window.location='http://www.avprog.narod.ru/'" class="weblink">http://www.avprog.narod.ru</a></span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Прерывания можно рассматривать как номер функции. Эти функции делают программирование более легким - вместо написания кода путем печатания символов вы можете просто вызвать прерывание и оно все сделает за вас. Существуют также функции прерываний, которые работают с дисками и другим &quot;железом&quot;. Мы называем такие функции </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">программными прерываниями</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">.</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Прерывания могут быть также вызваны различными устройствами. Такие прерывания называются </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">аппаратными прерываниями</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">. Но сейчас нас интересуют только </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">программные прерывания</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">.</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Чтобы выполнить </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">программное прерывание</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">, используют команду </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">INT</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">, которая имеет очень простой синтаксис:</span></p>
+<p class="p_Normal" style="margin: 14px 0 14px 40px;"><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">INT значение</span></p>
+<p><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Где </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">значение</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> может быть числом в диапазоне от 0 до 255 (или от 0 до 0FFh), обычно мы будем использовать шестнадцатиричные числа. Вы можете подумать, что имеются только 256 функций, но это не так. Каждое прерывание может иметь подфункции. Чтобы определить подфункцию, в регистр </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">AH</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> нужно записать ее номер перед вызовом прерывания. Каждое прерывание может иметь до 256 подфункций (таким образом мы получаем 256 * 256 = 65536 функций). В основном используется регистр </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">AH</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">, но иногда могут использоваться и другие регистры. Обычно другие регистры используются для записи параметров и данных подфункции.</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Следующий пример использует прерывание </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">INT 10h</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> и подфункцию </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">0Eh</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">, чтобы напечатать сообщение &quot;Hello!&quot;. Эта функция выводит символ на экран, перемещая курсор и прокручивая экран по необходимости.</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<div style="text-align: left; text-indent: 0; padding: 0 0 0 0; margin: 0 0 0 0;"><table style="width:50%; border:solid thin #a0a0a0; border-spacing:2px;">
+<tr>
+<td style="vertical-align:middle; padding:10px; border:solid thin #a0a0a0;"><p class="p_CodeExample" style="page-break-inside: avoid;"><span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">#MAKE_COM#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;инструкция&nbsp;компилятора&nbsp;для&nbsp;создания&nbsp;СОМ-файла.</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">ORG&nbsp;&nbsp;&nbsp;&nbsp;100h</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">;&nbsp;Подфункция,&nbsp;которую&nbsp;мы&nbsp;используем</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">;&nbsp;не&nbsp;изменяет&nbsp;регистр&nbsp;АН&nbsp;после&nbsp;завершения,</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">;&nbsp;так&nbsp;что&nbsp;мы&nbsp;можем&nbsp;использовать&nbsp;его&nbsp;только&nbsp;один&nbsp;раз</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">MOV&nbsp;&nbsp;&nbsp;&nbsp;AH,&nbsp;0Eh&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;выбор&nbsp;подфункции.</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">;&nbsp;Подфункция&nbsp;INT&nbsp;10h&nbsp;/&nbsp;0Eh&nbsp;принимает</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">;&nbsp;в&nbsp;качестве&nbsp;параметра&nbsp;ASCII-код&nbsp;символа,</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">;&nbsp;который&nbsp;нужно&nbsp;записывать&nbsp;в&nbsp;регистр&nbsp;AL.</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">MOV&nbsp;&nbsp;&nbsp;&nbsp;AL,&nbsp;'H'&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;ASCII-код:&nbsp;72</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">INT&nbsp;&nbsp;&nbsp;&nbsp;10h&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;напечатать&nbsp;его!</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">MOV&nbsp;&nbsp;&nbsp;&nbsp;AL,&nbsp;'e'&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;ASCII-код:&nbsp;101</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">INT&nbsp;&nbsp;&nbsp;&nbsp;10h&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;напечатать&nbsp;его!</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">MOV&nbsp;&nbsp;&nbsp;&nbsp;AL,&nbsp;'l'&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;ASCII-код:&nbsp;108</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">INT&nbsp;&nbsp;&nbsp;&nbsp;10h&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;напечатать&nbsp;его!</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">MOV&nbsp;&nbsp;&nbsp;&nbsp;AL,&nbsp;'l'&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;ASCII-код:&nbsp;108</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">INT&nbsp;&nbsp;&nbsp;&nbsp;10h&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;напечатать&nbsp;его!</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">MOV&nbsp;&nbsp;&nbsp;&nbsp;AL,&nbsp;'o'&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;ASCII-код:&nbsp;111</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">INT&nbsp;&nbsp;&nbsp;&nbsp;10h&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;напечатать&nbsp;его!</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">MOV&nbsp;&nbsp;&nbsp;&nbsp;AL,&nbsp;'!'&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;ASCII-код:&nbsp;33</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">INT&nbsp;&nbsp;&nbsp;&nbsp;10h&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;напечатать&nbsp;его!</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">RET&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;вернуться&nbsp;в&nbsp;операционную&nbsp;систему.</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Скопируйте и вставьте эту программу в редактор кода </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-style: italic;">Emu8086</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> и нажмите кнопку [</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">Compile and Emulate</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">]. Запустите ее!</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">См. </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;"><a href="supported_interrupts.html" class="topiclink">список поддерживаемых прерываний</a></span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> для более подробной информации о прерываниях.</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<hr style="height:2px; color:#000000; border-width:0; background-color:#000000;" /><p style="text-align: center;"><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;"><a href="asm_tutorial_03.html" class="topiclink">&lt;&lt;&lt; Предыдущая часть &lt;&lt;&lt; </a></span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> &nbsp; &nbsp; </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;"><a href="asm_tutorial_05.html" class="topiclink">&gt;&gt;&gt; Следующая часть &gt;&gt;&gt;</a></span></p>
+<hr style="height:2px; color:#000000; border-width:0; background-color:#000000;" /><p><span style="color: #000000;">&nbsp;</span></p>
+</td>
+</tr>
+</table>
+</div>
+
+</td></tr></table>
+
+</body>
+</html>

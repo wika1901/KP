@@ -1,0 +1,161 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+   <title>Перевод: Поляков А.В. http://www.avprog.narod.ru</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="" />
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+   <style type="text/css">
+     body { margin: 0px; background: #FFFFFF; }
+   </style>
+   <script type="text/javascript" src="jquery.js"></script>
+   <script type="text/javascript" src="helpman_settings.js"></script>
+   <script type="text/javascript" src="helpman_topicinit.js"></script>
+
+   <script type="text/javascript">
+     HMSyncTOC("index.html", "asm_tutorial_10.html");
+   </script>
+   <script type="text/javascript" src="highlight.js"></script>
+   <script type="text/javascript">
+     $(document).ready(function(){highlight();});
+   </script>
+</head>
+<body>
+
+
+<table style="width:100%; border:none; border-spacing:0px; padding:5px; background:#C0C0C0">
+  <tr style="vertical-align:middle">
+    <td style="text-align:left">
+      <h1 class="p_Heading1"><span class="f_Heading1">Перевод: Поляков А.В. http://www.avprog.narod.ru</span></h1>
+
+    </td>
+    <td style="text-align:right">
+     <a href="index.html">Top</a>&nbsp;
+     
+     
+    </td>
+  </tr>
+</table>
+
+
+<!-- Placeholder for topic body. -->
+<table style="width:100%;border:none;border-spacing:0px"><tr style="vertical-align:top"><td style="text-align:left;padding:5px">
+<p class="p_Normal">TEXT SCRAMBLING in TRIAL VERSION OUTPUT! In evaluation mode, Help+Manual will scramble individual characters in random words in your published output files. This is a limitation of the free trial version. <a href="https://www.helpandmanual.com" target="_blank" class="weblink"> This help system was created with an evaluation copy of Help+Manual.</a></p>
+<hr style="height:2px; color:#FF0000; border-width:0; background-color:#ff0000;" /><p class="p_Normal">&nbsp;</p>
+<div style="text-align: left; text-indent: 0; padding: 0 0 0 0; margin: 0 0 0 0;"><table style="width:80%; border:none; border-spacing:2px;">
+<tr>
+<td style="vertical-align:middle; padding:1px; border:none"><p><span style="font-size: 19px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">Уроки Ассемблера 8086 для начинающих (Часть 10)</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="font-size: 24px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">Макросы</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="font-size: 11px; font-family: Verdana,Geneva,Arial,sans-serif;">Перевод: Поляков А.В. <a href="javascript:if(confirm('http://www.avprog.narod.ru/%20%20\n\nThis%20file%20was%20not%20retrieved%20by%20Teleport%20Ultra,%20because%20it%20is%20addressed%20on%20a%20domain%20or%20path%20outside%20the%20boundaries%20set%20for%20its%20Starting%20Address.%20%20\n\nDo%20you%20want%20to%20open%20it%20from%20the%20server?'))window.location='http://www.avprog.narod.ru/'" class="weblink">http://www.avprog.narod.ru</a></span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Макросы - это те же процедуры, только виртуальные. Макросы подобны процедурам, но они выполняются только во время компиляции. После компиляции все макросы заменяются реальными командами. Если вы объявите макрос и никогда не будете использовать его в вашем коде, компилятор просто проигнорирует его. </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;"><a href="asm_tutorial_05.html" class="topiclink">emu8086.inc</a></span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> содержит хорошие примеры использования макросов. Этот файл содержит несколько макросов, которые делают создание кода более легким.</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<div style="text-align: left; text-indent: 0; padding: 0 0 0 0; margin: 0 0 0 0;"><table style="border:solid thin #a0a0a0; border-spacing:2px;">
+<tr>
+<td style="vertical-align:middle; padding:10px; border:solid thin #a0a0a0;"><p><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Определение макроса:</span></p>
+<p class="p_CodeExample" style="page-break-inside: avoid;"><span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">имя&nbsp;&nbsp;&nbsp;&nbsp;MACRO&nbsp;&nbsp;[параметры,...]</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;команды&gt;</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">ENDM</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">В отличие от процедур, макрос должен быть определен перед участком кода, где он будет использоваться, например:</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<div style="text-align: left; text-indent: 0; padding: 0 0 0 0; margin: 0 0 0 0;"><table style="border:solid thin #a0a0a0; border-spacing:2px;">
+<tr>
+<td style="vertical-align:middle; padding:10px; border:solid thin #a0a0a0;"><p class="p_CodeExample" style="page-break-inside: avoid;"><span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">MyMacro&nbsp;&nbsp;&nbsp;&nbsp;MACRO&nbsp;&nbsp;p1,&nbsp;p2,&nbsp;p3</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MOV&nbsp;AX,&nbsp;p1</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MOV&nbsp;BX,&nbsp;p2</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MOV&nbsp;CX,&nbsp;p3</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">ENDM</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">ORG&nbsp;100h</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">MyMacro&nbsp;1,&nbsp;2,&nbsp;3</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">MyMacro&nbsp;4,&nbsp;5,&nbsp;DX</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">RET</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Вышеописанный код эквивалентен следующему набору команд:</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="font-size: 16px; font-family: Fixedsys;">MOV AX, 00001h</span></p>
+<p><span style="font-size: 16px; font-family: Fixedsys;">MOV BX, 00002h</span></p>
+<p><span style="font-size: 16px; font-family: Fixedsys;">MOV CX, 00003h</span></p>
+<p><span style="font-size: 16px; font-family: Fixedsys;">MOV AX, 00004h</span></p>
+<p><span style="font-size: 16px; font-family: Fixedsys;">MOV BX, 00005h</span></p>
+<p><span style="font-size: 16px; font-family: Fixedsys;">MOV CX, DX</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<div style="text-align: left; text-indent: 0; padding: 0 0 0 0; margin: 0 0 0 0;"><table style="border:solid thin #a0a0a0; border-spacing:2px;">
+<tr>
+<td style="vertical-align:middle; padding:10px; border:solid thin #a0a0a0;"><p><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Некоторые важные замечания о </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">макросах</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> и </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">процедурах</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">:</span></p>
+<p class="p_Normal" style="text-indent: 0; padding-left: 20px; margin: 0 0 0 20px;"><span class="f_Normal" style="font-size:16px; font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:20px;margin-left:-20px">&#8226;</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Если вы хотите использовать процедуру, вы должны применить команду </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">CALL</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">, например:</span></p>
+<p class="p_Normal" style="margin: 14px 0 14px 40px;"><span style="font-size: 16px; font-family: Fixedsys;">CALL MyProc</span></p>
+<p class="p_Normal" style="text-indent: 0; padding-left: 20px; margin: 0 0 0 20px;"><span class="f_Normal" style="font-size:16px; font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:20px;margin-left:-20px">&#8226;</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Если вы хотите использовать макрос, вы можете просто напечатать его имя. Пример:</span></p>
+<p class="p_Normal" style="margin: 14px 0 14px 40px;"><span style="font-size: 16px; font-family: Fixedsys;">MyMacro</span></p>
+<p class="p_Normal" style="text-indent: 0; padding-left: 20px; margin: 0 0 0 20px;"><span class="f_Normal" style="font-size:16px; font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:20px;margin-left:-20px">&#8226;</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Процедура располагается по определенному адресу в памяти. Если вы воспользуетесь процедурой 100 раз, процессор будет передавать управление в эту часть памяти. Возвращение из процедуры выполняется командой </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">RET</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">. Для хранения адреса возврата используется </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">стек</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">. Команда </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">CALL</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> занимает 3 байта, так что размер исполнимого файла увеличивается очень незначительно, независимо от того, сколько раз вызывается процедура.</span></p>
+<p class="p_Normal" style="margin: 0 0 0 40px;">&nbsp;</p>
+<p class="p_Normal" style="text-indent: 0; padding-left: 20px; margin: 0 0 0 20px;"><span class="f_Normal" style="font-size:16px; font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:20px;margin-left:-20px">&#8226;</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Макрос выполняется непосредственно в коде программы. Поэтому если вы используете один и тот же макрос 100 раз, то компилятор будет распаковывать этот макрос также 100 раз, делая исполнимый файл все больше и больше, каждый раз вставляя в программу команды макроса.</span></p>
+<p class="p_Normal" style="margin: 0 0 0 40px;">&nbsp;</p>
+<p class="p_Normal" style="text-indent: 0; padding-left: 20px; margin: 0 0 0 20px;"><span class="f_Normal" style="font-size:16px; font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:20px;margin-left:-20px">&#8226;</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Вы должны использовать </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">стек</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> или регистры общего назначения для передачи параметров процедуре.</span></p>
+<p class="p_Normal" style="margin: 0 0 0 40px;">&nbsp;</p>
+<p class="p_Normal" style="text-indent: 0; padding-left: 20px; margin: 0 0 0 20px;"><span class="f_Normal" style="font-size:16px; font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:20px;margin-left:-20px">&#8226;</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Для передачи параметров макросу, вам достаточно просто напечатать их после имени макроса. Например:</span></p>
+<p class="p_Normal" style="margin: 14px 0 14px 40px;"><span style="font-size: 16px; font-family: Fixedsys;">MyMacro 1, 2, 3</span></p>
+<p class="p_Normal" style="text-indent: 0; padding-left: 20px; margin: 0 0 0 20px;"><span class="f_Normal" style="font-size:16px; font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:20px;margin-left:-20px">&#8226;</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Чтобы обозначить конец макроса, достаточно директивы </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">ENDM</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">.</span></p>
+<p class="p_Normal" style="margin: 0 0 0 40px;">&nbsp;</p>
+<p class="p_Normal" style="text-indent: 0; padding-left: 20px; margin: 0 0 0 20px;"><span class="f_Normal" style="font-size:16px; font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:20px;margin-left:-20px">&#8226;</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Чтобы обозначить конец процедуры, вы должны напечатать имя процедуры перед директивой </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">ENDP</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">.</span></p></td>
+</tr>
+</table>
+</div>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Макрос распаковывается непосредственно в коде, поэтому, если имеются метки внутри макроопределения, вы можете получить ошибку &quot;Duplicate declaration&quot; (Двойное объявление), если макрос используется два или более раз. Чтобы избежать такой проблемы, используйте директиву </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">LOCAL</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">, сопровождающую имена переменных, меток или имен процедур. Например:</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<div style="text-align: left; text-indent: 0; padding: 0 0 0 0; margin: 0 0 0 0;"><table style="width:80%; border:solid thin #a0a0a0; border-spacing:2px;">
+<tr>
+<td style="vertical-align:middle; padding:10px; border:solid thin #a0a0a0;"><p class="p_CodeExample" style="page-break-inside: avoid;"><span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">MyMacro2&nbsp;&nbsp;&nbsp;&nbsp;MACRO</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">&nbsp;LOCAL&nbsp;label1,&nbsp;label2</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">&nbsp;CMP&nbsp;&nbsp;AX,&nbsp;2</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">&nbsp;JE&nbsp;label1</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">&nbsp;CMP&nbsp;&nbsp;AX,&nbsp;3</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">&nbsp;JE&nbsp;label2</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">&nbsp;label1:</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">&nbsp;&nbsp;&nbsp;INC&nbsp;&nbsp;AX</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">&nbsp;label2:</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">&nbsp;&nbsp;&nbsp;ADD&nbsp;&nbsp;AX,&nbsp;2</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">ENDM</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">ORG&nbsp;100h</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">MyMacro2</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">MyMacro2</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">RET</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Если вы планируете использовать ваши макросы в нескольких программах, то лучше разместить все макросы в отдельном файле. Поместите этот файл в каталог </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">Inc</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> и примените директиву </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">INCLUDE </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-style: italic; font-weight: bold;">имя файла</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> для использования макросов. Пример такого файла можно найти в разделе </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;"><a href="asm_tutorial_05.html" class="topiclink">Библиотека общих функций - emu8086.inc</a></span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">.</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<hr style="height:2px; color:#000000; border-width:0; background-color:#000000;" /><p style="text-align: center;"><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;"><a href="asm_tutorial_09.html" class="topiclink">&lt;&lt;&lt; Предыдущая часть &lt;&lt;&lt; </a></span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> &nbsp; &nbsp; </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;"><a href="asm_tutorial_11.html" class="topiclink">&gt;&gt;&gt; Следующая часть &gt;&gt;&gt;</a></span></p>
+<hr style="height:2px; color:#000000; border-width:0; background-color:#000000;" /><p><span style="color: #000000;">&nbsp;</span></p>
+</td>
+</tr>
+</table>
+</div>
+
+</td></tr></table>
+
+</body>
+</html>

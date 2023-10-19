@@ -1,0 +1,168 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+   <title>Перевод: Поляков А.В. http://www.avprog.narod.ru</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="" />
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+   <style type="text/css">
+     body { margin: 0px; background: #FFFFFF; }
+   </style>
+   <script type="text/javascript" src="jquery.js"></script>
+   <script type="text/javascript" src="helpman_settings.js"></script>
+   <script type="text/javascript" src="helpman_topicinit.js"></script>
+
+   <script type="text/javascript">
+     HMSyncTOC("index.html", "asm_tutorial_12.html");
+   </script>
+   <script type="text/javascript" src="highlight.js"></script>
+   <script type="text/javascript">
+     $(document).ready(function(){highlight();});
+   </script>
+</head>
+<body>
+
+
+<table style="width:100%; border:none; border-spacing:0px; padding:5px; background:#C0C0C0">
+  <tr style="vertical-align:middle">
+    <td style="text-align:left">
+      <h1 class="p_Heading1"><span class="f_Heading1">Перевод: Поляков А.В. http://www.avprog.narod.ru</span></h1>
+
+    </td>
+    <td style="text-align:right">
+     <a href="index.html">Top</a>&nbsp;
+     
+     
+    </td>
+  </tr>
+</table>
+
+
+<!-- Placeholder for topic body. -->
+<table style="width:100%;border:none;border-spacing:0px"><tr style="vertical-align:top"><td style="text-align:left;padding:5px">
+<p class="p_Normal">TEXT SCRAMBLING in TRIAL VERSION OUTPUT! In evaluation mode, Help+Manual will scramble individual characters in random words in your published output files. This is a limitation of the free trial version. <a href="https://www.helpandmanual.com" target="_blank" class="weblink"> This help system was created with an evaluation copy of Help+Manual.</a></p>
+<hr style="height:2px; color:#FF0000; border-width:0; background-color:#ff0000;" /><p class="p_Normal">&nbsp;</p>
+<div style="text-align: left; text-indent: 0; padding: 0 0 0 0; margin: 0 0 0 0;"><table style="width:80%; border:none; border-spacing:2px;">
+<tr>
+<td style="vertical-align:middle; padding:1px; border:none"><p><span style="font-size: 19px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">Уроки Ассемблера 8086 для начинающих (Часть 12)</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="font-size: 24px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">Управление внешними устройствами</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="font-size: 11px; font-family: Verdana,Geneva,Arial,sans-serif;">Перевод: Поляков А.В. <a href="javascript:if(confirm('http://www.avprog.narod.ru/%20%20\n\nThis%20file%20was%20not%20retrieved%20by%20Teleport%20Ultra,%20because%20it%20is%20addressed%20on%20a%20domain%20or%20path%20outside%20the%20boundaries%20set%20for%20its%20Starting%20Address.%20%20\n\nDo%20you%20want%20to%20open%20it%20from%20the%20server?'))window.location='http://www.avprog.narod.ru/'" class="weblink">http://www.avprog.narod.ru</a></span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Эмулятор имеет три встроенных виртуальных устройства: светофор, шаговый двигатель и робот. Вы можете посмотреть эти устройства, используя меню эмулятора &quot;</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">Virtual Devices</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">&quot;.</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Техническую информацию ищите в разделе </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;"><a href="io.html" class="topiclink">I/O ports</a></span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">.</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Как правило, можно использовать любые процессоры семейства х86 для управления всеми видами устройств, различающихся в основном номерами портов ввода-вывода, которые могут быть изменены с помощью хитрого электронного оборудования. Обычно &quot;</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">.bin</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">&quot;-файл записывается микросхему ПЗУ (Read Only Memory (ROM) - постоянное запоминающее устройство - ПЗУ), система читает программу из этой микросхемы, загружает программу в ОЗУ и выполняет программу. Этот принцип используется для многих современных устройств, таких как микроволновые печи и т.п.</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<hr style="height:2px; color:#000000; border-width:0; background-color:#000000;" /><p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">Светофор</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><img alt="traffic" width="233" height="276" style="margin:0;width:233px;height:276px;border:none" src="traffic.gif"/></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Обычно для управления светофором используется массив (таблица) значений. В определенный период времени значение читается из массива и отправляется в порт. Например:</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<div style="text-align: left; text-indent: 0; padding: 0 0 0 0; margin: 0 0 0 0;"><table style="width:70%; border:solid thin #a0a0a0; border-spacing:2px;">
+<tr>
+<td style="vertical-align:middle; padding:10px; border:solid thin #a0a0a0;"><p class="p_CodeExample" style="page-break-inside: avoid;"><span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">;&nbsp;директива&nbsp;для&nbsp;создания&nbsp;BIN-файла:</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">#MAKE_BIN#</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">#CS=500#</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">#DS=500#</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">#SS=500#</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">#SP=FFFF#</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">#IP=0#</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">;&nbsp;пропустить&nbsp;таблицу&nbsp;данных:</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">JMP&nbsp;start</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">table&nbsp;DW&nbsp;100001100001b</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DW&nbsp;110011110011b</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DW&nbsp;001100001100b</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DW&nbsp;011110011110b</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">start:</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">MOV&nbsp;SI,&nbsp;0</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">;&nbsp;установить&nbsp;счетчик&nbsp;на&nbsp;количество</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">;&nbsp;элементов&nbsp;в&nbsp;таблице:</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">MOV&nbsp;CX,&nbsp;4</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">next_value:</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">;&nbsp;получить&nbsp;значение&nbsp;из&nbsp;таблицы:</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">MOV&nbsp;AX,&nbsp;table[SI]</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">;&nbsp;установить&nbsp;значение&nbsp;в&nbsp;порт&nbsp;ввода-вывода&nbsp;светофора:</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">OUT&nbsp;4,&nbsp;AX</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">;&nbsp;следующее&nbsp;слово:</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">ADD&nbsp;SI,&nbsp;2</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">CALL&nbsp;PAUSE</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">LOOP&nbsp;next_value</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">;&nbsp;начать&nbsp;с&nbsp;другого&nbsp;первого&nbsp;значения</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">JMP&nbsp;start</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">;&nbsp;==========================</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">PAUSE&nbsp;PROC</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">;&nbsp;сохранить&nbsp;регистры:</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">PUSH&nbsp;CX</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">PUSH&nbsp;DX</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">PUSH&nbsp;AX</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">;&nbsp;установить&nbsp;интервал&nbsp;(1&nbsp;миллион&nbsp;микросекунд&nbsp;-&nbsp;1&nbsp;секунда):</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">MOV&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CX,&nbsp;0Fh</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">MOV&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DX,&nbsp;4240h</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">MOV&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AH,&nbsp;86h</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">INT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;15h</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">;&nbsp;восстановить&nbsp;регистры:</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">POP&nbsp;AX</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">POP&nbsp;DX</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">POP&nbsp;CX</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">RET</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">PAUSE&nbsp;ENDP</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">;&nbsp;==========================</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<hr style="height:2px; color:#000000; border-width:0; background-color:#000000;" /><p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">Шаговый двигатель</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><img alt="stepper" width="237" height="215" style="margin:0;width:237px;height:215px;border:none" src="stepper.gif"/></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Двигатель может выполнить &quot;полушаг&quot; при помощи пары магнитов, которые поворачивают ротор двигателя на определенный угол. Затем включается следующая пара магнитов и поворачивает ротор двигателя на следующий &quot;шаг&quot; и т.д.</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Двигатель может выполниь полный шаг, если его повернуть парой магнитов, затем другой парой магнитов и в конце - одиночным магнитом и т.п. Лучший способ осуществить полный шаг - это выполнить его как два полушага.</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Полушаг - это </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">11.25</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> градусов.</span></p>
+<p><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Полный шаг - это </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">22.5</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> градуса.</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Двигатель может вращаться как по часовой стрелке, так и против часовой стрелки.</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">См. </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;"><a href="javascript:if(confirm('http://www.avprog.narod.ru/progs/Samples/stepper_motor.asm%20%20\n\nThis%20file%20was%20not%20retrieved%20by%20Teleport%20Ultra,%20because%20the%20server%20reports%20that%20this%20file%20cannot%20be%20found.%20%20\n\nDo%20you%20want%20to%20open%20it%20from%20the%20server?'))window.location='http://www.avprog.narod.ru/progs/Samples/stepper_motor.asm'" class="weblink">stepper_motor.asm</a></span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> в каталоге Samples.</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">См. также раздел ссылок Emu8086 </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;"><a href="io.html" class="topiclink">I/O ports</a></span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">.</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<hr style="height:2px; color:#000000; border-width:0; background-color:#000000;" /><p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">Робот</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><img alt="robot" width="530" height="352" style="margin:0;width:530px;height:352px;border:none" src="robot.gif"/></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Полный список набора команд для робота приведен в разделе </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;"><a href="io.html" class="topiclink">I/O ports</a></span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">.</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Для управления роботом должен быть использован набор алгоритмов для достижения максимальной эффективности. Самым простым, но очень неэффективным является алгоритм случайных перемещений (см. </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;"><a href="javascript:if(confirm('http://www.avprog.narod.ru/progs/Samples/robot.asm%20%20\n\nThis%20file%20was%20not%20retrieved%20by%20Teleport%20Ultra,%20because%20the%20server%20reports%20that%20this%20file%20cannot%20be%20found.%20%20\n\nDo%20you%20want%20to%20open%20it%20from%20the%20server?'))window.location='http://www.avprog.narod.ru/progs/Samples/robot.asm'" class="weblink">robot.asm</a></span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> в каталоге Samples).</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Можно также использовать таблицу данных (как и в светофоре). Это может быть хорошо, если робот всегда работает в одной и той же среде.</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<hr style="height:2px; color:#000000; border-width:0; background-color:#000000;" /><p style="text-align: center;"><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;"><a href="asm_tutorial_11.html" class="topiclink">&lt;&lt;&lt; Предыдущая часть &lt;&lt;&lt; </a></span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> &nbsp; &nbsp; </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;"><a href="asm_tutorial_13.html" class="topiclink">&gt;&gt;&gt; Следующая часть &gt;&gt;&gt;</a></span></p>
+<hr style="height:2px; color:#000000; border-width:0; background-color:#000000;" /><p><span style="color: #000000;">&nbsp;</span></p>
+</td>
+</tr>
+</table>
+</div>
+
+</td></tr></table>
+
+</body>
+</html>

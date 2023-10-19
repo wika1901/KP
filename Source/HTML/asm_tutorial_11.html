@@ -1,0 +1,166 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+   <title>Перевод: Поляков А.В. http://www.avprog.narod.ru</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="" />
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+   <style type="text/css">
+     body { margin: 0px; background: #FFFFFF; }
+   </style>
+   <script type="text/javascript" src="jquery.js"></script>
+   <script type="text/javascript" src="helpman_settings.js"></script>
+   <script type="text/javascript" src="helpman_topicinit.js"></script>
+
+   <script type="text/javascript">
+     HMSyncTOC("index.html", "asm_tutorial_11.html");
+   </script>
+   <script type="text/javascript" src="highlight.js"></script>
+   <script type="text/javascript">
+     $(document).ready(function(){highlight();});
+   </script>
+</head>
+<body>
+
+
+<table style="width:100%; border:none; border-spacing:0px; padding:5px; background:#C0C0C0">
+  <tr style="vertical-align:middle">
+    <td style="text-align:left">
+      <h1 class="p_Heading1"><span class="f_Heading1">Перевод: Поляков А.В. http://www.avprog.narod.ru</span></h1>
+
+    </td>
+    <td style="text-align:right">
+     <a href="index.html">Top</a>&nbsp;
+     
+     
+    </td>
+  </tr>
+</table>
+
+
+<!-- Placeholder for topic body. -->
+<table style="width:100%;border:none;border-spacing:0px"><tr style="vertical-align:top"><td style="text-align:left;padding:5px">
+<p class="p_Normal">TEXT SCRAMBLING in TRIAL VERSION OUTPUT! In evaluation mode, Help+Manual will scramble individual characters in random words in your published output files. This is a limitation of the free trial version. <a href="https://www.helpandmanual.com" target="_blank" class="weblink"> This help system was created with an evaluation copy of Help+Manual.</a></p>
+<hr style="height:2px; color:#FF0000; border-width:0; background-color:#ff0000;" /><p class="p_Normal">&nbsp;</p>
+<div style="text-align: left; text-indent: 0; padding: 0 0 0 0; margin: 0 0 0 0;"><table style="width:80%; border:none; border-spacing:2px;">
+<tr>
+<td style="vertical-align:middle; padding:1px; border:none"><p><span style="font-size: 19px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">Уроки Ассемблера 8086 для начинающих (Часть 11)</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="font-size: 24px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">Создание вашей собственной операционной системы</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="font-size: 11px; font-family: Verdana,Geneva,Arial,sans-serif;">Перевод: Поляков А.В. <a href="javascript:if(confirm('http://www.avprog.narod.ru/%20%20\n\nThis%20file%20was%20not%20retrieved%20by%20Teleport%20Ultra,%20because%20it%20is%20addressed%20on%20a%20domain%20or%20path%20outside%20the%20boundaries%20set%20for%20its%20Starting%20Address.%20%20\n\nDo%20you%20want%20to%20open%20it%20from%20the%20server?'))window.location='http://www.avprog.narod.ru/'" class="weblink">http://www.avprog.narod.ru</a></span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Обычно, когда компьютер стартует, он пытается загрузиться с первого 512-байтового сектора (это Цилиндр </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">0</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">, Головка </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">0</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">, Сектор </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">1</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">) дискеты в дисководе </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">A:</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> в память по адресу 0000h:7C00h и передать ей управление. Если это не удается, то BIOS пытается использовать MBR первого жесткого диска.</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Этот урок посвящен загрузке с дискеты. Те же принципы используются при загрузке с жесткого диска. Но использование дискеты имеет несколько преимуществ:</span></p>
+<p class="p_Normal" style="text-indent: 0; padding-left: 20px; margin: 0 0 0 20px;"><span class="f_Normal" style="font-size:16px; font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:20px;margin-left:-20px">&#8226;</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Вы можете сохранить существующую операционную систему неповрежденной (Windows, DOS...).</span></p>
+<p class="p_Normal" style="margin: 0 0 0 40px;">&nbsp;</p>
+<p class="p_Normal" style="text-indent: 0; padding-left: 20px; margin: 0 0 0 20px;"><span class="f_Normal" style="font-size:16px; font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:20px;margin-left:-20px">&#8226;</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Загрузочную запись дискеты легко модифицировать.</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Пример простой загрузочной программы для дискеты:</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<div style="text-align: left; text-indent: 0; padding: 0 0 0 0; margin: 0 0 0 0;"><table style="width:70%; border:solid thin #a0a0a0; border-spacing:2px;">
+<tr>
+<td style="vertical-align:middle; padding:10px; border:solid thin #a0a0a0;"><p class="p_CodeExample" style="page-break-inside: avoid;"><span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">;&nbsp;директива&nbsp;для&nbsp;создания&nbsp;BOOT-файла:</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">#MAKE_BOOT#</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">;&nbsp;Загрузочная&nbsp;запись&nbsp;помещается&nbsp;в&nbsp;0000:7C00.</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">;&nbsp;Эту&nbsp;информацию&nbsp;нужно&nbsp;сообщить&nbsp;компилятору:</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">ORG&nbsp;7C00h</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">;&nbsp;загружаем&nbsp;адрес&nbsp;сообщения&nbsp;в&nbsp;регистр&nbsp;SI:</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">LEA&nbsp;SI,&nbsp;msg</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">;&nbsp;функция&nbsp;телетайпа:</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">MOV&nbsp;AH,&nbsp;0Eh</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">print:&nbsp;&nbsp;&nbsp;MOV&nbsp;AL,&nbsp;[SI]</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CMP&nbsp;AL,&nbsp;0</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JZ&nbsp;done</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;INT&nbsp;10h&nbsp;&nbsp;&nbsp;;&nbsp;печать&nbsp;в&nbsp;режиме&nbsp;телетайпа.</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;INC&nbsp;SI</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JMP&nbsp;print</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">;&nbsp;ожидание&nbsp;нажатия&nbsp;любой&nbsp;клавиши:</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">done:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MOV&nbsp;AH,&nbsp;0</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;INT&nbsp;16h</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">;&nbsp;записать&nbsp;волшебное&nbsp;значение&nbsp;в&nbsp;0040h:0072h:</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">;&nbsp;&nbsp;&nbsp;0000h&nbsp;-&nbsp;холодная&nbsp;загрузка.</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">;&nbsp;&nbsp;&nbsp;1234h&nbsp;-&nbsp;горячая&nbsp;загрузка.</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">MOV&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AX,&nbsp;0040h</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">MOV&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DS,&nbsp;AX</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">MOV&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;w.[0072h],&nbsp;0000h&nbsp;;&nbsp;холодная&nbsp;загрузка.</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">JMP&nbsp;0FFFFh:0000h&nbsp;&nbsp;;&nbsp;перезагрузка!</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">new_line&nbsp;EQU&nbsp;13,&nbsp;10</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">msg&nbsp;DB&nbsp;&nbsp;'Hello&nbsp;This&nbsp;is&nbsp;My&nbsp;First&nbsp;Boot&nbsp;Program!'</span><br />
+<span class="f_CodeExample" style="font-size: 13px; font-family: Fixedsys;">&nbsp;&nbsp;&nbsp;&nbsp;DB&nbsp;&nbsp;new_line,&nbsp;'Press&nbsp;any&nbsp;key&nbsp;to&nbsp;reboot',&nbsp;0</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Скопируйте описанный выше пример в редактор исходного кода </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">Emu8086</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> и нажмите кнопку [</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">Compile and Emulate</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">]. Эмулятор автоматически загрузит &quot;.boot&quot; файл по адресу 0000h:7C00h.</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Вы можете управлять им как обычной программой или использовать меню </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">Virtual Drive</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> -&gt; </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">Write 512 bytes at 7C00h to </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">-&gt; </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">Boot Sector</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> виртуального дисковода (файл FLOPPY_0 в каталоге, где установлен эмулятор). После записи вашей программы в Виртуальный Дисковод, вы можете выбрать </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">Boot from Floppy</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> из меню </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">Virtual Drive</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">.</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<hr style="height:2px; color:#000000; border-width:0; background-color:#000000;" /><p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Из любопытства вы можете записать виртуальную дискету (</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">FLOPPY_0</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">) или &quot;</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">.boot</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">&quot;-файл на реальную дискету и загрузить с нее ваш компьютер. Я рекомендую использовать &quot;RawWrite for Windows&quot; из: </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;"><a href="javascript:if(confirm('http://uranus.it.swin.edu.au/~jn/linux/rawwrite.htm%20%20\n\nThis%20file%20was%20not%20retrieved%20by%20Teleport%20Ultra,%20because%20it%20is%20addressed%20on%20a%20domain%20or%20path%20outside%20the%20boundaries%20set%20for%20its%20Starting%20Address.%20%20\n\nDo%20you%20want%20to%20open%20it%20from%20the%20server?'))window.location='http://uranus.it.swin.edu.au/~jn/linux/rawwrite.htm'" class="weblink">http://uranus.it.swin.edu.au/~jn/linux/rawwrite.htm</a></span></p>
+<p><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">(с недавнего времени работает под всеми версиями Windows!)</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">Примечание:</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> Этот </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">.boot</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">-файл </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-style: italic; font-weight: bold;">не</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> совместим с загрузочным сектором MS-DOS (будет невозможно прочитать или записать данные на вашу дискету, пока вы ее снова не отформатируете). Фактичеки, если вы используете какие-либо &quot;сырые&quot; программы, такие как описанная выше, они так или иначе будут стирать все данные. Так что убедитесь, что ваша дискета не содержит важных данных.</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<hr style="height:2px; color:#000000; border-width:0; background-color:#000000;" /><p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">&quot;</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">.boot</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">&quot;-файлы имеют ограничение 512 байтов (размер сектора). Если ваша операционная система имеет размер, превышающий это ограничение, то вам придется использовать программу для загрузки из других секторов. Хороший пример маленькой операционной системы можно найти в каталоге &quot;Samples&quot;:</span></p>
+<p><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;"><a href="javascript:if(confirm('http://www.avprog.narod.ru/progs/Samples/micro-os_loader.asm%20%20\n\nThis%20file%20was%20not%20retrieved%20by%20Teleport%20Ultra,%20because%20the%20server%20reports%20that%20this%20file%20cannot%20be%20found.%20%20\n\nDo%20you%20want%20to%20open%20it%20from%20the%20server?'))window.location='http://www.avprog.narod.ru/progs/Samples/micro-os_loader.asm'" class="weblink">micro-os_loader.asm</a></span></p>
+<p><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;"><a href="javascript:if(confirm('http://www.avprog.narod.ru/progs/Samples/micro-os_kernel.asm%20%20\n\nThis%20file%20was%20not%20retrieved%20by%20Teleport%20Ultra,%20because%20the%20server%20reports%20that%20this%20file%20cannot%20be%20found.%20%20\n\nDo%20you%20want%20to%20open%20it%20from%20the%20server?'))window.location='http://www.avprog.narod.ru/progs/Samples/micro-os_kernel.asm'" class="weblink">micro-os_kernel.asm</a></span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Для создания расширенной операционной системы (более 512 байтов), вы можете использовать файлы &quot;</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">.bin</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">&quot; (выберите &quot;</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">BIN Template</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">&quot; из меню &quot;</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">File</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">&quot; -&gt; &quot;</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">New</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">&quot;).</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Чтобы записать файл &quot;</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">.bin</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">&quot; на виртуальный дисковод, выберите </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">&quot;Write .bin file to floppy...&quot;</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> из меню эмулятора </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">&quot;Virtual Drive&quot;</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">:</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><img alt="write_bin" width="366" height="239" style="margin:0;width:366px;height:239px;border:none" src="write_bin.gif"/></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Вы можете также использовать для записи &quot;</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">.boot</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">&quot;-файлов.</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<div style="text-align: left; text-indent: 0; padding: 0 0 0 0; margin: 0 0 0 0;"><table style="width:194px; border:solid thin #a0a0a0; border-spacing:2px;">
+<tr>
+<td style="vertical-align:middle; padding:8px; border:solid thin #a0a0a0;"><p><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Сектор:</span></p>
+<p class="p_Normal" style="margin: 14px 0 0 40px;"><span style="font-size: 16px; font-family: Fixedsys;">Цилиндр: 0</span></p>
+<p class="p_Normal" style="margin: 0 0 0 40px;"><span style="font-size: 16px; font-family: Fixedsys;">Головка:0</span></p>
+<p class="p_Normal" style="margin: 0 0 14px 40px;"><span style="font-size: 16px; font-family: Fixedsys;">Сектор: 1</span></p>
+<p><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">это загрузочный сектор!</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="p_Normal" style="margin: 14px 0 0 0;">&nbsp;</p>
+<p class="p_Normal">&nbsp;</p>
+<p class="p_Normal"><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Упрощенный дисковод и структура дискеты:</span></p>
+<p class="p_Normal">&nbsp;</p>
+<p class="p_Normal"><img alt="floppy" width="367" height="375" style="margin:0;width:367px;height:375px;border:none" src="floppy.gif"/></p>
+<p class="p_Normal" style="margin: 14px 0 0 0;"><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Для дискеты на </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">1440 КБ</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">:</span></p>
+<p class="p_Normal" style="text-indent: 0; padding-left: 20px; margin: 0 0 0 20px;"><span class="f_Normal" style="font-size:16px; font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:20px;margin-left:-20px">&#8226;</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Дисковод имеет 2 стороны и 2 головки - по одной на каждую сторону (</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">0..1</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">). Головки дисковода перемещаются над поверхностью диска на каждой стороне.</span></p>
+<p class="p_Normal" style="margin: 0 0 0 40px;">&nbsp;</p>
+<p class="p_Normal" style="text-indent: 0; padding-left: 20px; margin: 0 0 0 20px;"><span class="f_Normal" style="font-size:16px; font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:20px;margin-left:-20px">&#8226;</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Каждая сторона имеет 80 цилиндров (нумерация </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">0..79</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">).</span></p>
+<p class="p_Normal" style="margin: 0 0 0 40px;">&nbsp;</p>
+<p class="p_Normal" style="text-indent: 0; padding-left: 20px; margin: 0 0 0 20px;"><span class="f_Normal" style="font-size:16px; font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:20px;margin-left:-20px">&#8226;</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Каждый цилиндр имеет 18 секторов (</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">1..18</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">).</span></p>
+<p class="p_Normal" style="margin: 0 0 0 40px;">&nbsp;</p>
+<p class="p_Normal" style="text-indent: 0; padding-left: 20px; margin: 0 0 0 20px;"><span class="f_Normal" style="font-size:16px; font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:20px;margin-left:-20px">&#8226;</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">В каждом секторе </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">512</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> байтов.</span></p>
+<p class="p_Normal" style="margin: 0 0 0 40px;">&nbsp;</p>
+<p class="p_Normal" style="text-indent: 0; padding-left: 20px; margin: 0 0 0 20px;"><span class="f_Normal" style="font-size:16px; font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:20px;margin-left:-20px">&#8226;</span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Общий размер дискеты: 2 x 80 x 18 x 512 = 1474560 байтов.</span></p>
+<p class="p_Normal" style="margin: 0 0 0 40px;">&nbsp;</p>
+<p><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">Чтобы прочитать секторы с дискеты, используйте </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;"><a href="supported_interrupts.html#int13h_02h" class="topiclink">INT 13h / AH = 02h</a></span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;">.</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<hr style="height:2px; color:#000000; border-width:0; background-color:#000000;" /><p style="text-align: center;"><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;"><a href="asm_tutorial_10.html" class="topiclink">&lt;&lt;&lt; Предыдущая часть &lt;&lt;&lt; </a></span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif;"> &nbsp; &nbsp; </span><span style="font-size: 16px; font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;"><a href="asm_tutorial_12.html" class="topiclink">&gt;&gt;&gt; Следующая часть &gt;&gt;&gt;</a></span></p>
+<hr style="height:2px; color:#000000; border-width:0; background-color:#000000;" /><p><span style="color: #000000;">&nbsp;</span></p>
+</td>
+</tr>
+</table>
+</div>
+
+</td></tr></table>
+
+</body>
+</html>
